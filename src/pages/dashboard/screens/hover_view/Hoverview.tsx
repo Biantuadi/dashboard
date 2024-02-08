@@ -26,12 +26,12 @@ export default function Hoverview() {
             see_more_link="/dashboard/tasks/done"
             number_of_task={10}
           />
-            <Task
-              label="En cours"
-              image={IconInProgress}
-              see_more_link="/dashboard/tasks/in_progress"
-              number_of_task={0}
-            />
+          <Task
+            label="En cours"
+            image={IconInProgress}
+            see_more_link="/dashboard/tasks/in_progress"
+            number_of_task={0}
+          />
           <Task
             label="En attente"
             image={IconWaiting}
@@ -42,8 +42,8 @@ export default function Hoverview() {
 
         <div className="section_grid">
           <UpdateSettings />
-          <JobTransactions />
           <EventsUpcomming />
+          <JobTransactions />
           <div className="grid_4"></div>
         </div>
       </div>
@@ -53,7 +53,7 @@ export default function Hoverview() {
 
 const HoverviewStyled = styled.div`
   padding: 10px 30px;
-  background-color: #FDFDFD;
+  background-color: #fdfdfd;
   height: 100%;
 
   .see_tasks {
@@ -69,7 +69,7 @@ const HoverviewStyled = styled.div`
 
       h1 {
         line-height: 1.2;
-    color: rgb(17, 25, 39);
+        color: rgb(17, 25, 39);
       }
 
       button {
@@ -89,12 +89,11 @@ const HoverviewStyled = styled.div`
 
     .collectif_grid {
       border-radius: 20px;
- background-color: #fff;
- box-shadow: rgba(0, 0, 0, 0.04) 0px 5px 22px, rgba(0, 0, 0, 0.03) 0px 0px 0px 0.5px;
- height: 200px;
+      background-color: #fff;
+      box-shadow: rgba(0, 0, 0, 0.04) 0px 5px 22px,
+        rgba(0, 0, 0, 0.03) 0px 0px 0px 0.5px;
+      padding: 20px;
+      
     }
-
-    
   }
 `;
-

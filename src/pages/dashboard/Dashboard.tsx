@@ -17,7 +17,6 @@ export default function Dashboard() {
 }
 
 const DashboardStyled = styled.div`
-  /* height: 100vh; */
   display: flex;
   background-color: #FDFDFD;
   
@@ -31,7 +30,6 @@ const DashboardStyled = styled.div`
 
   .container_home-section {
     background-color: #FDFDFD;
-    /* width: 80%; */
     margin-left: 280px;
   }
 `;

@@ -30,6 +30,7 @@ display: flex;
       background-color: rgb(245, 247, 255);
       border-radius: 20px;
       padding: 40px;
+      height: 250px;
 
       .content_img {
         width: 200px;
