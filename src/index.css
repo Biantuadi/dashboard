@@ -4,7 +4,8 @@
 @import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900);
 /* Montserrat */
 @import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
-
+/*  */
+@import url(https://fonts.googleapis.com/css?family=Plus+Jakarta+Sans:200,300,regular,500,600,700,800,200italic,300italic,italic,500italic,600italic,700italic,800italic);
 
 html {
   scroll-behavior: smooth;
@@ -69,4 +70,40 @@ h6 {
 a {
   font-family: "Poppins", sans-serif;
   color: #16183b;
+}
+
+@media (min-width: 1200px){
+  .css-agywf3 {
+      font-size: 1.0417rem;
+  }
+
+}
+@media (min-width: 900px) {
+
+  .css-agywf3 {
+      font-size: 1.0417rem;
+  }
+}
+@media (min-width: 600px){
+  .css-agywf3 {
+      font-size: 1.0417rem;
+  }
+
+}
+
+.css-agywf3 {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 700;
+  font-size: 1.0625rem;
+  line-height: 1.2;
+  color: inherit;
+}
+
+.span-text {
+  font-size: 0.875rem;
+        font-weight: 400;
+        line-height: 1.57;
+        font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+        color: rgb(157, 164, 174);
 }

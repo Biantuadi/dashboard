@@ -1,20 +1,31 @@
 import styled from "styled-components";
-import Header from "./header/Header";
-import Navmenu from "./navbar/Navmenu";
+import Navmenu from "../../components/navbar/Navmenu";
 import Hoverview from "./screens/hover_view/Hoverview";
 
 export default function Dashboard() {
   return (
     <DashboardStyled>
-      <Header />
-      <main>
+      <div className="container_navbar">
         <Navmenu />
+      </div>
+
+      <div className="container_home-section">
         <Hoverview />
-      </main>
+      </div>
     </DashboardStyled>
   );
 }
 
 const DashboardStyled = styled.div`
-  color: red;
+  height: 100vh;
+  display: flex;
+  
+  .container_navbar {
+    background-color: #1c2536;
+  }
+
+  .container_home-section {
+    width: 100%;
+    background-color: #f5f5f5;
+  }
 `;
