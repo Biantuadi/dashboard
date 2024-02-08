@@ -1,24 +1,15 @@
 import styled from "styled-components";
 import { GoSearch } from "react-icons/go";
-import Tooltip from "@mui/material/Tooltip";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { LuUsers } from "react-icons/lu";
+import Tresor from "../../../../assets/avantar/avatar-marcus.png";
+import TooltipC from "../../../../components/Tooltip";
 
 export default function Header() {
   const notificationCount = 5;
   return (
     <HeaderStyled>
-      <Tooltip
-        title="Search"
-        placement="bottom"
-        enterDelay={300}
-        leaveDelay={200}
-        sx={{ backgroundColor: "#151e27" }} 
-      >
-        <span>
-          <GoSearch className="icon-search" />
-        </span>
-      </Tooltip>
+      <TooltipC children={<GoSearch className="icon-search" />} title="Search" />
 
       <div className="aside_header">
         <div className="flag_france">
@@ -31,10 +22,11 @@ export default function Header() {
           )}
         </div>
         <div className="contacts_icon_container">
-        <LuUsers className="contacts_icon" />
+        {/* <LuUsers className="contacts_icon" /> */}
+        <TooltipC children={<LuUsers className="contacts_icon" />} title="Contacts" />
         </div>
         <div className="container_profile_avatar">
-          <img src="https://www.w3schools.com/howto/img_avatar.png" alt="avatar" />
+          <img src={Tresor} alt="profile" />
         </div>
       </div>
     </HeaderStyled>
@@ -115,12 +107,13 @@ const HeaderStyled = styled.div`
   }
 
   .container_profile_avatar {
-    width: 40px;
-    height: 40px;
+    width: 43px;
+    height: 43px;
     border-radius: 50%;
     overflow: hidden;
     padding: 2px;
     border: 2px solid rgb(242, 244, 247);
+    cursor: pointer;
 
     img {
       width: 100%;

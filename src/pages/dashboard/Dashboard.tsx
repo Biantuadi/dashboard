@@ -17,15 +17,21 @@ export default function Dashboard() {
 }
 
 const DashboardStyled = styled.div`
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
+  background-color: #FDFDFD;
   
   .container_navbar {
     background-color: #1c2536;
+    position: fixed;
+    height: 100%;
+    width: 280px;
+
   }
 
   .container_home-section {
-    width: 100%;
     background-color: #FDFDFD;
+    /* width: 80%; */
+    margin-left: 280px;
   }
 `;

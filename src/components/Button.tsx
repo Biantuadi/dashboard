@@ -1,11 +1,9 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { IconDefinition } from "@fortawesome/fontawesome-svg-core"; 
 import styled from "styled-components";
 
 interface ButtonProps {
   text: string;
   onClick?: () => void;
-  icon?: IconDefinition;
+  icon?: React.ReactNode;
   className?: string;
   type?: "button" | "submit" | "reset";
 }
@@ -14,7 +12,7 @@ const Button: React.FC<ButtonProps> = ({ text, onClick, icon, className, ...rest
   return (
       <ButtonStyled onClick={onClick} className={className} {...rest}>
         {text}
-      {icon && <FontAwesomeIcon icon={icon}  />}
+      {icon}
       </ButtonStyled>
   );
 };

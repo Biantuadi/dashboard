@@ -2,6 +2,13 @@ import styled from "styled-components";
 import HeaderNav from "./HeaderNav";
 import { TbSmartHome } from "react-icons/tb";
 import LinkNavigation from "./LinkNavigation";
+import { CiCalendarDate } from "react-icons/ci";
+import { IoAnalyticsOutline } from "react-icons/io5";
+import { IoPersonOutline, IoLogOutOutline } from "react-icons/io5";
+import Button from "../Button";
+import { SiCodesignal } from "react-icons/si";
+import { RiHistoryFill } from "react-icons/ri";
+
 
 export default function Navmenu() {
   return (
@@ -14,11 +21,32 @@ export default function Navmenu() {
           icon={<TbSmartHome />}
         />
         <LinkNavigation
-          to="/projects"
-          label="Projects"
-          icon={<TbSmartHome />}
+          to="/calendar"
+          label="Calendar"
+          icon={<CiCalendarDate />}
+        />
+        <LinkNavigation
+          to="/analytics"
+          label="Analytics"
+          icon={<IoAnalyticsOutline />}
+        />
+        <LinkNavigation
+          to="/history"
+          label="History"
+          icon={<RiHistoryFill />}
+        />
+        <LinkNavigation
+          to="/profile"
+          label="Profile"
+          icon={<IoPersonOutline />}
+        />
+        <LinkNavigation
+          to="/logout"
+          label="Logout"
+          icon={<IoLogOutOutline />}
         />
       </div>
+        <Button text="Design facture" className="classic" icon={<SiCodesignal />}/>
     </NavmenuStyled>
   );
 }
@@ -28,7 +56,6 @@ const NavmenuStyled = styled.div`
   flex-direction: column;
   height: 100%;
   padding: 25px 20px 0 25px;
-  height: 100vh;
 
   .container_navigations {
     display: flex;
@@ -49,7 +76,7 @@ const NavmenuStyled = styled.div`
 
     svg {
       font-size: 1.25rem;
-      border-radius: 50%;
+      /* border-radius: 50%; */
       /* color: #6366F1; */
       color: #9da4ae;
     }
@@ -80,6 +107,17 @@ const NavmenuStyled = styled.div`
 
     .text {
       color: #ffffff;
+    }
+  }
+
+  button {
+    /* padding: 8px 0; */
+    font-weight: normal;
+    margin-top: 30em;
+
+    svg {
+      font-size: 1.03rem;
+      color: #fff;
     }
   }
 `;
