@@ -26,6 +26,6 @@ const DashboardStyled = styled.div`
 
   .container_home-section {
     width: 100%;
-    background-color: #f5f5f5;
+    background-color: #FDFDFD;
   }
 `;
