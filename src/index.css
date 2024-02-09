@@ -151,3 +151,11 @@ button.classic:hover {
 button.classic:active {
   box-shadow: rgba(0, 0, 0, 0.08) 0px 3px
 }
+
+hr {
+  margin: 8px 0px 4px 0;
+  flex-shrink: 0;
+  border-width: 0px 0px thin;
+  border-style: solid;
+  border-color: rgb(242, 244, 247);
+}

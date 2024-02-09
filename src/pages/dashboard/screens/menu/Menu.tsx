@@ -5,13 +5,18 @@ import { useState } from "react";
 import Input from "../../../../components/Input";
 import { fakeProductsMenu, fakeCategoriesMenu } from "./main_fake.data";
 import ProductCard from "../../../../components/Card";
+import ProductEditor from "../../../../components/product_aside/ProductEditor";
 
+// Menu component
 export default function Menu() {
   const [products, setProducts] = useState(fakeProductsMenu);
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("");
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [asideOpen, setAsideOpen] = useState(false);
+  const [isCreatingProduct, setIsCreatingProduct] = useState(false);
 
-  const onSearch = (e:any) => {
+  const onSearch = (e) => {
     const searchValue = e.target.value.toLowerCase();
     setSearch(searchValue);
     const filteredProducts = fakeProductsMenu.filter((product) =>
@@ -20,18 +25,57 @@ export default function Menu() {
     setProducts(filteredProducts);
   };
 
-  const onCategoryChange = (e:any) => {
+  const onCategoryChange = (e) => {
     const selectedCategory = e.target.value;
     setCategory(selectedCategory);
     const filteredProducts = selectedCategory
-      ? fakeProductsMenu.filter((product) => product.category_id === parseInt(selectedCategory))
+      ? fakeProductsMenu.filter(
+          (product) => product.category_id === parseInt(selectedCategory)
+        )
       : fakeProductsMenu;
     setProducts(filteredProducts);
   };
 
+  const onProductClick = (product) => {
+    setSelectedProduct(product);
+    setAsideOpen(true);
+  };
+
+  const closeAside = () => {
+    setAsideOpen(false);
+    setTimeout(() => {
+      setSelectedProduct(null);
+    }, 300); // Adjust this timeout to match your transition duration
+  };
+
+  const createProduct = () => {
+    // Implement logic to create a new product
+  };
+
   return (
     <MenuStyled>
-      <TitlePage text="Menu" button_text="+ Ajouter un menu" onClick={() => {}} />
+      <TitlePage
+        text="Menu"
+        button_text="+ Ajouter un menu"
+        onClick={() => setIsCreatingProduct(true)}
+      />
+
+      {isCreatingProduct && (
+        <ProductEditor
+          product={{ name: "", description: "", unity: "", price: "" }}
+          isOpen={asideOpen}
+          onClose={closeAside}
+        />
+      )}
+
+      {selectedProduct && (
+        <ProductEditor
+          product={selectedProduct}
+          isOpen={asideOpen}
+          onClose={closeAside}
+        />
+      )}
+
       <div className="main_container">
         <div className="flex1">
           <div className="input_search_container">
@@ -54,7 +98,14 @@ export default function Menu() {
 
           <div className="container_cards">
             {products.map((product) => (
-              <ProductCard key={product.id} product={product} category={fakeCategoriesMenu.find(cat => cat.id === product.category_id)} />
+              <ProductCard
+                key={product.id}
+                product={product}
+                category={fakeCategoriesMenu.find(
+                  (cat) => cat.id === product.category_id
+                )}
+                onClick={() => onProductClick(product)}
+              />
             ))}
           </div>
         </div>
@@ -150,7 +201,8 @@ const MenuStyled = styled.div`
     flex: 1;
     background-color: #fff;
     border-radius: 20px;
-    box-shadow: rgba(0, 0, 0, 0.04) 0px 5px 22px, rgba(0, 0, 0, 0.03) 0px 0px 0px 0.5px;
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 5px 22px,
+      rgba(0, 0, 0, 0.03) 0px 0px 0px 0.5px;
     padding: 20px;
     align-self: flex-start;
   }

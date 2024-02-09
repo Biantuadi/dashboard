@@ -5,10 +5,11 @@ import { IoMdMore } from "react-icons/io";
 interface Props {
     product: any;
     category: any;
+    onClick?: () => void;
     
 }
-const ProductCard = ({ product, category }: Props) => (
-  <Card>
+const ProductCard = ({ product, category, onClick }: Props) => (
+  <Card onClick={onClick}>
     <header>
       <CiStar />
 
@@ -79,13 +80,7 @@ const CardInfo = styled.div`
   display: flex;
   flex-direction: column;
   gap: 5px;
-  hr {
-    margin: 8px 0px 4px 0;
-    flex-shrink: 0;
-    border-width: 0px 0px thin;
-    border-style: solid;
-    border-color: rgb(242, 244, 247);
-  }
+  
 `;
 
 const ProductName = styled.h3`

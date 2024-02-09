@@ -4,7 +4,7 @@ import Button from './Button'
 interface TitlePageProps {
     text: string;
     button_text: string;
-    onClick: () => void
+    onClick: () => void;
 }
 
 export default function TitlePage({text, button_text, onClick}: TitlePageProps) {
