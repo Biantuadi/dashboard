@@ -17,7 +17,6 @@ export default function Dashboard() {
 }
 
 const DashboardStyled = styled.div`
-  display: flex;
   background-color: #FDFDFD;
   
   .container_navbar {

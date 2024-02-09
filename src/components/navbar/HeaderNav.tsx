@@ -25,7 +25,7 @@ export default function HeaderNav() {
         </div>
         <div className="container_left">
           <div className="text_container">
-            <h6 className="css-agywf3">A'tast</h6>
+            <h6 className="css-agywf3">A'taste</h6>
             <span className="span-text">Production</span>
           </div>
           <div className="icon_chevron_down">

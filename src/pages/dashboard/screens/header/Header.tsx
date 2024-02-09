@@ -9,21 +9,34 @@ export default function Header() {
   const notificationCount = 5;
   return (
     <HeaderStyled>
-      <TooltipC children={<GoSearch className="icon-search" />} title="Search" />
+      <TooltipC
+        children={<GoSearch className="icon-search transition_hover" />}
+        title="Search"
+      />
 
       <div className="aside_header">
         <div className="flag_france">
-          <img src="https://www.countryflags.com/wp-content/uploads/france-flag-png-xl.png" alt="flag" />
+          <img
+            src="https://www.countryflags.com/wp-content/uploads/france-flag-png-xl.png"
+            alt="flag"
+          />
         </div>
-        <div className="notification-icon-container">
-          <IoIosNotificationsOutline className="notification-icon" />
-          {notificationCount > 0 && (
-            <div className="notification-counter">{notificationCount}</div>
-          )}
-        </div>
+        <TooltipC
+          children={
+            <div className="notification-icon-container">
+              <IoIosNotificationsOutline className="notification-icon" />
+              {notificationCount > 0 && (
+                <div className="notification-counter">{notificationCount}</div>
+              )}
+            </div>
+          }
+          title="Notifications"
+        />
         <div className="contacts_icon_container">
-        {/* <LuUsers className="contacts_icon" /> */}
-        <TooltipC children={<LuUsers className="contacts_icon" />} title="Contacts" />
+          <TooltipC
+            children={<LuUsers className="contacts_icon transition_hover" />}
+            title="Contacts"
+          />
         </div>
         <div className="container_profile_avatar">
           <img src={Tresor} alt="profile" />
@@ -38,10 +51,11 @@ const HeaderStyled = styled.div`
   align-items: center;
   justify-content: space-between;
   backdrop-filter: blur(6px);
-    background-color: rgba(255, 255, 255, 0.8);
-    position: sticky;
-    top: 0px;
-    z-index: 1100;
+  background-color: #fdfdfda2;
+  position: sticky;
+  top: 0px;
+  z-index: 1100;
+  padding: 13px 30px;
 
   .aside_header {
     display: flex;
@@ -53,6 +67,7 @@ const HeaderStyled = styled.div`
     width: 23px;
     height: 18px;
     overflow: hidden;
+    cursor: pointer;
 
     img {
       width: 100%;
@@ -60,28 +75,32 @@ const HeaderStyled = styled.div`
     }
   }
 
-  .icon-search {
+  .transition_hover {
     transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    font-size: 2.6em;
     padding: 8px;
     border-radius: 50%;
     color: rgb(108, 115, 127);
     cursor: pointer;
+    font-size: 2.6em;
 
     &:hover {
       background-color: #e0e0e051;
     }
   }
 
+  .icon-search {
+    font-size: 2.6em;
+  }
+
   .notification-icon-container {
     position: relative;
     display: inline-block;
+    cursor: pointer;
   }
 
   .notification-icon {
     font-size: 2em;
     color: rgb(108, 115, 127);
-    cursor: pointer;
   }
 
   .notification-counter {
@@ -101,7 +120,7 @@ const HeaderStyled = styled.div`
   }
 
   .contacts_icon {
-    font-size: 1.7em;
+    /* font-size: 1.7em; */
     color: rgb(108, 115, 127);
     cursor: pointer;
   }
@@ -121,6 +140,4 @@ const HeaderStyled = styled.div`
       border-radius: 50%;
     }
   }
-
-
 `;

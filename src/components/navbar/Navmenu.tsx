@@ -8,7 +8,8 @@ import { IoPersonOutline, IoLogOutOutline } from "react-icons/io5";
 import Button from "../Button";
 import { SiCodesignal } from "react-icons/si";
 import { RiHistoryFill } from "react-icons/ri";
-
+import { FiUsers } from "react-icons/fi";
+import { IoRestaurantOutline } from "react-icons/io5";
 
 export default function Navmenu() {
   return (
@@ -21,9 +22,19 @@ export default function Navmenu() {
           icon={<TbSmartHome />}
         />
         <LinkNavigation
+          to="/menu"
+          label="Menu"
+          icon={<IoRestaurantOutline />}
+        />
+        <LinkNavigation
           to="/calendar"
           label="Calendar"
           icon={<CiCalendarDate />}
+        />
+        <LinkNavigation
+          to="/contacts"
+          label="Contacts"
+          icon={<FiUsers /> }
         />
         <LinkNavigation
           to="/analytics"
