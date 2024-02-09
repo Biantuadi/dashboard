@@ -6,18 +6,15 @@ import { Task } from "./TaskCard";
 import UpdateSettings from "./cards_grid/UpdateSettings_1";
 import EventsUpcomming from "./cards_grid/EventsUpcomming_3";
 import JobTransactions from "./cards_grid/JobTransactions_2";
-import Button from "../../../../components/Button";
+import TitlePage from "../../../../components/TitlePage";
 
 export default function Hoverview() {
   return (
     <HoverviewStyled>
       
 
-      <div className="see_tasks">
-        <div className="first_container_text-and-button">
-          <h1 className="">Overview</h1>
-          <Button className="classic" text="+ Ajouter un contrat" />
-        </div>
+        
+        <TitlePage text="Overview" button_text="+ Ajouter un contrat" onClick={() => {}} />
 
         <div className="tasks_container">
           <Task
@@ -50,7 +47,6 @@ export default function Hoverview() {
           </div>
           <div className="grid_4"></div>
         </div>
-      </div>
     </HoverviewStyled>
   );
 }
@@ -60,31 +56,16 @@ const HoverviewStyled = styled.div`
   height: 100%;
   width: 100%;
 
-  .see_tasks {
-    margin-top: 80px;
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+  padding: 0 30px 50px 30px;
+
+
+  .tasks_container {
     display: flex;
-    flex-direction: column;
-    gap: 45px;
-    padding: 0 30px 50px 30px;
-
-    .first_container_text-and-button {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      h1 {
-        line-height: 1.2;
-        color: rgb(17, 25, 39);
-      }
-
-      button {
-      }
-    }
-
-    .tasks_container {
-      display: flex;
-      gap: 40px;
-    }
+    gap: 40px;
   }
 
   .section_flex {

@@ -11,12 +11,12 @@ const Input: React.FC<InputProps> = ({ onChange, ...rest }) => {
 };
 
 const InputStyled = styled.input`
-  width: 380px;
+  /* width: 380px; */
   padding: 9px;
   border: 1px solid rgb(0, 0, 0);
   border-radius: 5px;
   outline: none;
-  height: 55px;
+  /* height: 55px; */
   color: #000;
   font-size: 17px;
 

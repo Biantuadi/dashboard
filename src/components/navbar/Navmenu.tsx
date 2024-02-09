@@ -121,7 +121,7 @@ const NavmenuStyled = styled.div`
 
   button {
     font-weight: normal;
-    margin-top: 30em;
+    margin-top: 80%;
 
     svg {
       font-size: 1.03rem;
