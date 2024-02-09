@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import Person from "../../../../assets/others/person-standing.png";
-import Button from "../../../../components/Button";
+import Person from "../../../../../assets/others/person-standing.png";
+import Button from "../../../../../components/Button";
 import { LuSettings2 } from "react-icons/lu";
 
 export default function UpdateSettings() {

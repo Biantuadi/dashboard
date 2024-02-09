@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Navmenu from "../../components/navbar/Navmenu";
 // import Hoverview from "./screens/hover_view/Hoverview";
 import { Outlet } from "react-router-dom";
+import Header from "./screens/header/Header";
 
 export default function Dashboard() {
   return (
@@ -11,7 +12,7 @@ export default function Dashboard() {
       </div>
 
       <div className="container_home-section">
-        {/* <Hoverview /> */}
+      <Header />
         <Outlet />
       </div>
     </DashboardStyled>

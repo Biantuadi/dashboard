@@ -1,18 +1,17 @@
 import styled from "styled-components";
-import Header from "../screens/header/Header";
-import IconDone from "../../../assets/icons/done.svg";
-import IconInProgress from "../../../assets/icons/in_progress.svg";
-import IconWaiting from "../../../assets/icons/waiting.svg";
+import IconDone from "../../../../assets/icons/done.svg";
+import IconInProgress from "../../../../assets/icons/in_progress.svg";
+import IconWaiting from "../../../../assets/icons/waiting.svg";
 import { Task } from "./TaskCard";
 import UpdateSettings from "./cards_grid/UpdateSettings_1";
 import EventsUpcomming from "./cards_grid/EventsUpcomming_3";
 import JobTransactions from "./cards_grid/JobTransactions_2";
-import Button from "../../../components/Button";
+import Button from "../../../../components/Button";
 
 export default function Hoverview() {
   return (
     <HoverviewStyled>
-      <Header />
+      
 
       <div className="see_tasks">
         <div className="first_container_text-and-button">
