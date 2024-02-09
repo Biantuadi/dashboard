@@ -89,8 +89,8 @@ export default function EventsUpcomming() {
       <div className="container_events">
         {events
           .slice(0, showAllevents ? events.length : 4)
-          .map((event) => (
-            <div key={event.id} className="event">
+          .map((event, key) => (
+            <div key={key} className="event">
               <div className="data_name_container">
                 <div className="date_affiche">
                   <span className="month">

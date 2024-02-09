@@ -119,8 +119,8 @@ export default function JobTransactions() {
       <div className="container_transactions">
         {transactions
           .slice(0, showAllTransactions ? transactions.length : 4)
-          .map((transaction) => (
-            <div key={transaction.id} className="transaction">
+          .map((transaction, key) => (
+            <div key={key} className="transaction">
               <div className="data_name_container">
                 <div className="date_affiche">
                   <span className="month">

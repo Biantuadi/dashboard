@@ -20,34 +20,35 @@ export default function Navmenu() {
           to="/dashboard"
           label="Dashboard"
           icon={<TbSmartHome />}
+          end
         />
         <LinkNavigation
-          to="/menu"
+          to="./menu"
           label="Menu"
           icon={<IoRestaurantOutline />}
         />
         <LinkNavigation
-          to="/calendar"
+          to="./calendar"
           label="Calendar"
           icon={<CiCalendarDate />}
         />
         <LinkNavigation
-          to="/contacts"
+          to="./contacts"
           label="Contacts"
           icon={<FiUsers /> }
         />
         <LinkNavigation
-          to="/analytics"
+          to="./analytics"
           label="Analytics"
           icon={<IoAnalyticsOutline />}
         />
         <LinkNavigation
-          to="/history"
+          to="./history"
           label="History"
           icon={<RiHistoryFill />}
         />
         <LinkNavigation
-          to="/profile"
+          to="/dashboard/profile"
           label="Profile"
           icon={<IoPersonOutline />}
         />
@@ -87,8 +88,6 @@ const NavmenuStyled = styled.div`
 
     svg {
       font-size: 1.25rem;
-      /* border-radius: 50%; */
-      /* color: #6366F1; */
       color: #9da4ae;
     }
 
@@ -100,7 +99,6 @@ const NavmenuStyled = styled.div`
       font-weight: 600;
       line-height: 24px;
       white-space: nowrap;
-      /* color: #ffffff; */
       color: #9da4ae;
     }
 
@@ -122,7 +120,6 @@ const NavmenuStyled = styled.div`
   }
 
   button {
-    /* padding: 8px 0; */
     font-weight: normal;
     margin-top: 30em;
 

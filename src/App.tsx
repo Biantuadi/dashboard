@@ -1,3 +1,4 @@
+// App.tsx
 import {
   BrowserRouter as Router,
   Routes,
@@ -5,30 +6,22 @@ import {
   Navigate,
 } from "react-router-dom";
 
-// import Welcome from "./pages/welcome/Welcome";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Login from "./pages/auth/login/Login";
-// import { isAuthenticated } from "./utils/authUtils";
+import Profile from "./pages/dashboard/screens/profile/Profile";
+import Hoverview from "./pages/dashboard/hover_view/Hoverview";
+import History from "./pages/dashboard/screens/history/History";
 
 const App = () => {
-  // const isAuthenticatedUser = isAuthenticated();
-
   return (
     <Router>
       <Routes>
-        {/* {isAuthenticatedUser ? (
-          <>
-            <Route path="/events" element={<Dashboard />} />
-            <Route path="*" element={<Navigate replace to="/events" />} />
-          </>
-        ) : (
-          <>
-            <Route path="/login" element={<Login />} />
-            <Route path="*" element={<Navigate replace to="/" />} />
-          </>
-        )} */}
         <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard />}>
+          <Route index element={<Hoverview />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="history" element={<History />} />
+        </Route>
         <Route path="*" element={<Navigate replace to="/dashboard" />} />
       </Routes>
     </Router>
