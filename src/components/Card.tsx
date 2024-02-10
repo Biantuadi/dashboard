@@ -9,13 +9,14 @@ interface Props {
     
 }
 const ProductCard = ({ product, category, onClick }: Props) => (
+
+  
   <Card onClick={onClick}>
     <header>
       <CiStar />
-
       <IoMdMore />
     </header>
-    <img src={category.icon} alt={product.name} />
+    <img src={product.iconProduct ? product.iconProduct : category.icon } alt={product.name} />
     <CardInfo>
       <ProductName>{product.name}</ProductName>
       <hr />
@@ -68,6 +69,7 @@ const Card = styled.div`
   img {
     width: 50px;
     height: 50px;
+    object-fit: cover;
   }
 
   .product_info {

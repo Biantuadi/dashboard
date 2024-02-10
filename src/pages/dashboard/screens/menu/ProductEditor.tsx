@@ -14,7 +14,6 @@ interface ProductEditorProps {
 
 // @ts-ignore
 const ProductEditor = ({ product, isOpen, onClose, category, creatorAvatar }: ProductEditorProps) => {
-  // @ts-ignore
   return (
     <AsideContainer open={isOpen}>
       <header className="header">
@@ -24,10 +23,7 @@ const ProductEditor = ({ product, isOpen, onClose, category, creatorAvatar }: Pr
       <hr />
       <div className="content">
         <div className="container_img">
-          <img
-            src="https://static.vecteezy.com/system/resources/previews/026/691/352/original/fried-egg-fast-food-meal-icon-isolated-3d-rendering-png.png"
-            alt={product.name}
-          />
+        <img src={product.iconProduct ? product.iconProduct : category.icon } alt={product.name} />
         </div>
         <div className="to_update">
           <h2 className="css-u5c54l">{product.name}</h2>

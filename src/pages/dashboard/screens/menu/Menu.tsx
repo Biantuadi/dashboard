@@ -3,10 +3,11 @@ import styled from "styled-components";
 import { IoIosSearch } from "react-icons/io";
 import { useState } from "react";
 import Input from "../../../../components/Input";
-import { fakeProductsMenu, fakeCategoriesMenu } from "./main_fake.data";
 import ProductCard from "../../../../components/Card";
 import ProductEditor from "./ProductEditor";
 import Tresor from "../../../../assets/avantar/avatar-marcus.png";
+import { fakeProductsMenu } from "../../../../data/data_products";
+import { fakeCategoriesMenu } from "../../../../data/category_product";
 
 export default function Menu() {
   const [products, setProducts] = useState(fakeProductsMenu);
