@@ -69,7 +69,7 @@ export const fakeCategoriesMenu = [
     {
         id: 14,
         name : "Sauce",
-        icon: "https://media.istockphoto.com/id/1314356494/vector/realistic-detailed-3d-red-tomato-ketchup-bottle-and-basil-leaves-for-salad-vector.jpg?s=612x612&w=0&k=20&c=4m9L7DMh09ghsVU6DrU61W_I50-fe07YTgnIKrYsf1A=",
+        icon: "https://static.vecteezy.com/system/resources/previews/023/858/482/original/glass-bottle-of-ketchup-on-transparent-background-png.png",
     },
     {
         id: 15,

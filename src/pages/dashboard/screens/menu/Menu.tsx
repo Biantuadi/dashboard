@@ -54,7 +54,7 @@ export default function Menu(): JSX.Element {
     <MenuStyled>
       <TitlePage
         text="Menu"
-        button_text="+ Ajouter un menu"
+        button_text="+ Ajouter"
         onClick={() => {}}
       />
 

@@ -41,7 +41,8 @@ export const fakeProductsMenu = [
         name: "Frites de Patate douce",
         unity: "La Portion",
         price: 3.50,
-        iconProduct: "https://drive.google.com/thumbnail?id=1dTldt3973H-ZQK2ijSVWvkPguqo-IcXn",
+        // iconProduct: "https://drive.google.com/thumbnail?id=1dTldt3973H-ZQK2ijSVWvkPguqo-IcXn",
+        iconProduct: "https://tb-static.uber.com/prod/image-proc/processed_images/dc28e91e99a5a5cacba22cefbb3e995e/f0d1762b91fd823a1aa9bd0dab5c648d.jpeg",
         description: "Des frites de patate douce croustillantes, une explosion de saveurs.",
         creator_id: 1,
         tax: 10.000,
@@ -163,7 +164,7 @@ export const fakeProductsMenu = [
         description: "Bière",
         creator_id: 1,
         price: 5.00,
-        iconProduct: "",
+        iconProduct: "https://tb-static.uber.com/prod/image-proc/processed_images/d37f0d2361c75314e029fc76dbf59976/f0d1762b91fd823a1aa9bd0dab5c648d.jpeg",
         tax: 20.000,
         cost: 1.47,
         category_id: 4
@@ -175,7 +176,7 @@ export const fakeProductsMenu = [
         description: "Bière",
         creator_id: 1,
         price: 5.00,
-        iconProduct: "",
+        iconProduct: "https://tb-static.uber.com/prod/image-proc/processed_images/b5e8deee114fd55c417accbb14cb858d/f0d1762b91fd823a1aa9bd0dab5c648d.jpeg",
         tax: 20.000,
         cost: 1.45,
         category_id: 4
@@ -185,7 +186,7 @@ export const fakeProductsMenu = [
         name : "Guiness Camérounaise 33cl",
         unity : "La Bouteille",
         price: 5.00,
-        iconProduct: "",
+        iconProduct: "https://tb-static.uber.com/prod/image-proc/processed_images/33c9d1e0a242f72ba581f941b030a148/f0d1762b91fd823a1aa9bd0dab5c648d.jpeg",
         tax: 20.000,
         cost: 1.45,
         category_id: 4
@@ -195,7 +196,7 @@ export const fakeProductsMenu = [
         name : "Phoenix Île maurice",
         unity : "La Bouteille",
         price: 5.00,
-        iconProduct: "",
+        iconProduct: "https://tb-static.uber.com/prod/image-proc/processed_images/a62224a36f2220e47cbfed7f1ddc47b2/f0d1762b91fd823a1aa9bd0dab5c648d.jpeg",
         tax: 20.000,
         cost: 1.45,
         category_id: 4
@@ -215,7 +216,7 @@ export const fakeProductsMenu = [
         name : "Pression Desperados 25cl",
         unity : "Par verre",
         price: 4.00,
-        iconProduct: "",
+        iconProduct: "https://www.alphaprix.com/38690-home_default/desperados-6x33cl-vp-appro-palette.jpg",
         tax: 20.000,
         cost: 1.00,
         category_id: 4
@@ -225,17 +226,7 @@ export const fakeProductsMenu = [
         name : "THB Madagascar 33cl",
         unity : "La Bouteille",
         price: 5.00,
-        iconProduct: "",
-        tax: 20.000,
-        cost: 1.40,
-        category_id: 4
-    },
-    {
-        id: 21,
-        name : "THB Madagascar 33cl",
-        unity : "La Bouteille",
-        price: 5.00,
-        iconProduct: "",
+        iconProduct: "https://racines-sa.com/wp-content/uploads/2020/10/BIE%E2%95%A0C%CC%A7RES-THB-web.jpg",
         tax: 20.000,
         cost: 1.40,
         category_id: 4
@@ -247,7 +238,7 @@ export const fakeProductsMenu = [
         description: "Jus maison à base d'hibiscus",
         creator_id: 1,
         price: 8.00,
-        iconProduct: "",
+        iconProduct: "https://lorbeducafe.re/wp-content/uploads/2019/03/bissap-Jus.png",
         tax: 5.500,
         cost: 0.50,
         category_id: 5
@@ -259,7 +250,7 @@ export const fakeProductsMenu = [
         creator_id: 1,
         unity : "Par verre",
         price: 9.00,
-        iconProduct: "",
+        iconProduct: "https://media-cdn.tripadvisor.com/media/photo-m/1280/28/3c/83/cd/jus-citron-gingembre.jpg",
         tax: 5.500,
         cost: 1.20,
         category_id: 5
@@ -402,7 +393,7 @@ export const fakeProductsMenu = [
         unity : "La Portion",
         price: 6.00,
         creator_id: 1,
-        iconProduct: "",
+        iconProduct: "https://tb-static.uber.com/prod/image-proc/processed_images/92db71ea42dc4941c30f470c06f942b7/f0d1762b91fd823a1aa9bd0dab5c648d.jpeg",
         tax: 10.000,
         cost: 1.00,
         category_id: 8
@@ -424,7 +415,7 @@ export const fakeProductsMenu = [
         unity : "La Portion",
         price: 6.00,
         creator_id: 1,
-        iconProduct: "",
+        iconProduct: "https://tb-static.uber.com/prod/image-proc/processed_images/173ffa0aed4c79318fece993a72d61dd/f0d1762b91fd823a1aa9bd0dab5c648d.jpeg",
         tax: 10.000,
         cost: 1.50,
         category_id: 8
@@ -435,7 +426,7 @@ export const fakeProductsMenu = [
         unity : "La Portion",
         price: 6.00,
         creator_id: 1,
-        iconProduct: "",
+        iconProduct: "https://tb-static.uber.com/prod/image-proc/processed_images/173ffa0aed4c79318fece993a72d61dd/f0d1762b91fd823a1aa9bd0dab5c648d.jpeg",
         tax: 10.000,
         cost: 1.50,
         category_id: 8
@@ -445,7 +436,7 @@ export const fakeProductsMenu = [
         name : "Accras de morue",
         unity : "La Pièce",
         price: 1.26,
-        iconProduct: "",
+        iconProduct: "https://tb-static.uber.com/prod/image-proc/processed_images/c49f8a8e77db8c3f21a704c1bbbf3a96/f0d1762b91fd823a1aa9bd0dab5c648d.jpeg",
         tax: 10.000,
         cost: 0.33,
         category_id: 9
@@ -485,7 +476,7 @@ export const fakeProductsMenu = [
         name : "Les Yeux de Tountakhamon",
         unity : "La Pièce",
         price: 1.25,
-        iconProduct: "",
+        iconProduct: "https://tb-static.uber.com/prod/image-proc/processed_images/1ff85c12ebbe49acaace9d55fa0c541e/f0d1762b91fd823a1aa9bd0dab5c648d.jpeg",
         tax: 10.000,
         cost: 1.25,
         category_id: 9
@@ -615,7 +606,7 @@ export const fakeProductsMenu = [
         name : "1/2 Poulet Braisé",
         unity : "La Pièce",
         price: 9.90,
-        iconProduct: "",
+        iconProduct: "https://tb-static.uber.com/prod/image-proc/processed_images/c81f3243b3d76389772758d0ae1a058c/f0d1762b91fd823a1aa9bd0dab5c648d.jpeg",
         tax: 10.000,
         cost: 2.20,
         category_id: 11
@@ -641,16 +632,6 @@ export const fakeProductsMenu = [
         category_id: 11
     },
     {
-        id: 60,
-        name : "Cuisse de Poulet Braisé",
-        unity : "La Pièce",
-        price: 5.50,
-        iconProduct: "",
-        tax: 10.000,
-        cost: 0.90,
-        category_id: 11
-    },
-    {
         id: 61,
         name : "Cuisse de Poulet Braisée",
         unity : "La Pièce",
@@ -664,8 +645,9 @@ export const fakeProductsMenu = [
         id: 62,
         name : "Dorade entière Braisée",
         unity : "La Pièce",
+        // https://drive.google.com/file/d/1vxB5fDEEQ185w2jemkQDNB2WBKAsoUy6/view?usp=drive_link
         price: 15.90,
-        iconProduct: "",
+        iconProduct: "https://drive.google.com/thumbnail?id=1vxB5fDEEQ185w2jemkQDNB2WBKAsoUy6",
         tax: 10.000,
         cost: 4.00,
         category_id: 11
@@ -735,7 +717,7 @@ export const fakeProductsMenu = [
         name : "Poêlé de Gombo aux Carottes",
         unity : "La Portion",
         price: 5.50,
-        iconProduct: "",
+        iconProduct: "https://tb-static.uber.com/prod/image-proc/processed_images/5404e0efd8a64936a2bcc6fe71f376a6/f0d1762b91fd823a1aa9bd0dab5c648d.jpeg",
         tax: 10.000,
         cost: 1.80,
         category_id: 12
@@ -755,7 +737,7 @@ export const fakeProductsMenu = [
         name : "Sauce Mafé",
         unity : "La Portion",
         price: 6.00,
-        iconProduct: "",
+        iconProduct: "https://cn-geo1.uber.com/image-proc/resize/eats/format=webp/width=550/height=440/quality=70/srcb64=aHR0cHM6Ly90Yi1zdGF0aWMudWJlci5jb20vcHJvZC9pbWFnZS1wcm9jL3Byb2Nlc3NlZF9pbWFnZXMvYTAwOTJkMDk4MzBjZThjMTQwNDUwNWM1MDgzZWEwNjEvZjBkMTc2MmI5MWZkODIzYTFhYTliZDBkYWI1YzY0OGQuanBlZw==",
         tax: 10.000,
         cost: 1.50,
         category_id: 12
@@ -765,7 +747,7 @@ export const fakeProductsMenu = [
         name : "Sauce Yassa",
         unity : "La Portion",
         price: 6.50,
-        iconProduct: "",
+        iconProduct: "https://cn-geo1.uber.com/image-proc/resize/eats/format=webp/width=550/height=440/quality=70/srcb64=aHR0cHM6Ly90Yi1zdGF0aWMudWJlci5jb20vcHJvZC9pbWFnZS1wcm9jL3Byb2Nlc3NlZF9pbWFnZXMvNzI1ZmNjY2EzMDJmOTQyZTM4Y2IyMDIyZGI1Mjg4MmEvZjBkMTc2MmI5MWZkODIzYTFhYTliZDBkYWI1YzY0OGQuanBlZw==",
         tax: 10.000,
         cost: 1.50,
         category_id: 12

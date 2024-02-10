@@ -157,6 +157,8 @@ const AsideContainer = styled.div<{ open: boolean }>`
         width: 60px;
         height: 60px;
         object-fit: cover;
+        background-color: rgb(248, 249, 250);
+        border-radius: 10px;
       }
     }
 
