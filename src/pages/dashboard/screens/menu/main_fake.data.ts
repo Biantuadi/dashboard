@@ -93,6 +93,8 @@ export const fakeProductsMenu = [
         unity : "La Portion",
         price: 3.50,
         iconProduct: "",
+        description: "Banane plantain",
+        creator_id: 1,
         tax: 10.000,
         cost: 0.70,
         category_id: 1

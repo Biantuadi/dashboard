@@ -5,16 +5,15 @@ import { useState } from "react";
 import Input from "../../../../components/Input";
 import { fakeProductsMenu, fakeCategoriesMenu } from "./main_fake.data";
 import ProductCard from "../../../../components/Card";
-import ProductEditor from "../../../../components/product_aside/ProductEditor";
+import ProductEditor from "./ProductEditor";
+import Tresor from "../../../../assets/avantar/avatar-marcus.png";
 
-// Menu component
 export default function Menu() {
   const [products, setProducts] = useState(fakeProductsMenu);
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("");
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [asideOpen, setAsideOpen] = useState(false);
-  const [isCreatingProduct, setIsCreatingProduct] = useState(false);
 
   const onSearch = (e) => {
     const searchValue = e.target.value.toLowerCase();
@@ -48,31 +47,23 @@ export default function Menu() {
     }, 300); // Adjust this timeout to match your transition duration
   };
 
-  const createProduct = () => {
-    // Implement logic to create a new product
-  };
-
   return (
     <MenuStyled>
       <TitlePage
         text="Menu"
         button_text="+ Ajouter un menu"
-        onClick={() => setIsCreatingProduct(true)}
+        onClick={() => {}}
       />
-
-      {isCreatingProduct && (
-        <ProductEditor
-          product={{ name: "", description: "", unity: "", price: "" }}
-          isOpen={asideOpen}
-          onClose={closeAside}
-        />
-      )}
 
       {selectedProduct && (
         <ProductEditor
           product={selectedProduct}
           isOpen={asideOpen}
           onClose={closeAside}
+          category={fakeCategoriesMenu.find(
+            (cat) => cat.id === selectedProduct.category_id
+          )}
+          creatorAvatar={Tresor}
         />
       )}
 
