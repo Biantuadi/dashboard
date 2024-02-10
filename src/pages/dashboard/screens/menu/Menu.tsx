@@ -1,79 +1,32 @@
 import TitlePage from "../../../../components/TitlePage";
 import styled from "styled-components";
-import { useState } from "react";
-import ProductCard from "../../../../components/Card";
-import ProductEditor from "./ProductEditor";
+import ProductCard from "./widgets/product/Card";
+import ProductEditor from "./widgets/nav/ProductEditor";
 import Tresor from "../../../../assets/avantar/avatar-marcus.png";
-import { fakeProductsMenu } from "../../../../data/data_products";
 import { fakeCategoriesMenu } from "../../../../data/category_product";
-import ContainerSearch from "./ContainerSearch";
-import convertirCaracteresSpeciaux from "../../../../utils/main_utils";
-import { GrFormNext, GrFormPrevious } from "react-icons/gr";
+import ContainerSearch from "./widgets/ContainerSearch";
+import ContainerChangePage from "./widgets/ContainerChangePage";
+import { useMenuFunctions } from "./widgets/functions/MenuFunctions";
 
 export default function Menu(): JSX.Element {
-  const [products, setProducts] = useState<any[]>(fakeProductsMenu);
-  const [search, setSearch] = useState<string>("");
-  const [category, setCategory] = useState<string>("");
-  const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
-  const [asideOpen, setAsideOpen] = useState<boolean>(false);
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const productsPerPage: number = 9;
+  const {
+    products,
+    search,
+    category,
+    selectedProduct,
+    asideOpen,
+    currentPage,
+    productsPerPage,
+    currentProducts,
+    onPageNext,
+    onPagePrevious,
+    onSearch,
+    onCategoryChange,
+    onProductClick,
+    closeAside,
+  } = useMenuFunctions();
 
-  const onPageNext = (): void => {
-    if (currentPage < Math.ceil(products.length / productsPerPage)) {
-      setCurrentPage((prevPage) => prevPage + 1);
-    }
-  };
-
-  const onPagePrevious = (): void => {
-    if (currentPage > 1) {
-      setCurrentPage((prevPage) => prevPage - 1);
-    }
-  };
-
-  const onSearch = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    const searchValue = e.target.value.toLowerCase();
-    setSearch(searchValue);
-    const filteredProducts = fakeProductsMenu.filter((product) =>
-      convertirCaracteresSpeciaux(product.name.toLowerCase()).includes(
-        convertirCaracteresSpeciaux(searchValue)
-      )
-    );
-    setProducts(filteredProducts);
-    setCurrentPage(1); // Reset page number on search
-  };
-
-  const onCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>): void => {
-    const selectedCategory = e.target.value;
-    setCategory(selectedCategory);
-    const filteredProducts = selectedCategory
-      ? fakeProductsMenu.filter(
-          (product) => product.category_id === parseInt(selectedCategory)
-        )
-      : fakeProductsMenu;
-    setProducts(filteredProducts);
-    setCurrentPage(1); // Reset page number on category change
-  };
-
-  const onProductClick = (product: any): void => {
-    setSelectedProduct(product);
-    setAsideOpen(true);
-  };
-
-  const closeAside = (): void => {
-    setAsideOpen(false);
-    setTimeout(() => {
-      setSelectedProduct(null);
-    }, 300);
-  };
-
-  // Calculate the index range of products to display based on the current page
-  const indexOfLastProduct: number = currentPage * productsPerPage;
-  const indexOfFirstProduct: number = indexOfLastProduct - productsPerPage;
-  const currentProducts: any[] = products.slice(
-    indexOfFirstProduct,
-    indexOfLastProduct
-  );
+  
 
   return (
     <MenuStyled>
@@ -112,70 +65,20 @@ export default function Menu(): JSX.Element {
             ))}
           </div>
 
-          <ContainerChangePage className="change_page_next_cards">
-            <div className="text_container">
-              <p>
-                Page {currentPage} sur{" "}
-                {Math.ceil(products.length / productsPerPage)}
-              </p>
-            </div>
-
-            <div className="icons_container">
-              <GrFormPrevious
-                onClick={onPagePrevious}
-                style={{ color: currentPage === 1 ? "rgb(108, 115, 127)" : "" }}
-              />
-              <GrFormNext
-                onClick={onPageNext}
-                style={{
-                  color:
-                    currentPage === Math.ceil(products.length / productsPerPage)
-                      ? "rgb(108, 115, 127)"
-                      : "",
-                }}
-              />
-            </div>
-          </ContainerChangePage>
+          <ContainerChangePage
+            currentPage={currentPage}
+            totalPages={Math.ceil(products.length / productsPerPage)}
+            onPageNext={onPageNext}
+            onPagePrevious={onPagePrevious}
+          />
         </div>
         <div className="aside">
           <h2>Categories</h2>
-          {/* <CategoryRings  /> */}
         </div>
       </div>
     </MenuStyled>
   );
 }
-
-const ContainerChangePage = styled.div`
-  display: flex;
-  align-items: center;
-  align-self: flex-end;
-  gap: 20px;
-
-  p {
-    font-size: 0.875rem;
-    font-weight: 400;
-    line-height: 1.57;
-    flex-shrink: 0;
-  }
-
-  .icons_container {
-    display: flex;
-    svg {
-      cursor: pointer;
-      transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-      font-size: 1.5rem;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      padding: 5px;
-
-      &:hover {
-        background-color: rgba(108, 115, 127, 0.04);
-      }
-    }
-  }
-`;
 
 const MenuStyled = styled.div`
   background-color: #fdfdfd;

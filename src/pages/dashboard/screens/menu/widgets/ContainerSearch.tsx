@@ -1,6 +1,6 @@
 import { IoIosSearch } from "react-icons/io";
-import Input from "../../../../components/Input";
-import { fakeCategoriesMenu } from "../../../../data/category_product";
+import Input from "../../../../../components/Input";
+import { fakeCategoriesMenu } from "../../../../../data/category_product";
 import styled from "styled-components";
 
 interface ContainerSearchProps {
