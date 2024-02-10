@@ -11,9 +11,7 @@ interface ProductEditorProps {
   creatorAvatar: string;
 }
 
-
-// @ts-ignore
-const ProductEditor = ({ product, isOpen, onClose, category, creatorAvatar }: ProductEditorProps) => {
+const ProductEditor: React.FC<ProductEditorProps> = ({ product, isOpen, onClose, category, creatorAvatar }) => {
   return (
     <AsideContainer open={isOpen}>
       <header className="header">
@@ -23,7 +21,7 @@ const ProductEditor = ({ product, isOpen, onClose, category, creatorAvatar }: Pr
       <hr />
       <div className="content">
         <div className="container_img">
-        <img src={product.iconProduct ? product.iconProduct : category.icon } alt={product.name} />
+          <img src={product.iconProduct ? product.iconProduct : category.icon } alt={product.name} />
         </div>
         <div className="to_update">
           <h2 className="css-u5c54l">{product.name}</h2>
@@ -31,32 +29,33 @@ const ProductEditor = ({ product, isOpen, onClose, category, creatorAvatar }: Pr
         </div>
         <p>{product.description}</p>
         <div className="product_info">
-          <LabelAndTitle label="Créer par" child={
-            <img src={creatorAvatar} alt="avatar" />
-          } />
-          <LabelAndTitle label="Catégorie" child={
-          <h3>{category.name}</h3> 
-          } />
-          <LabelAndTitle label="Unité" child={
-           <h3>{product.unity}</h3> 
-          } />
-          <LabelAndTitle label="Prix" child={
-         <h3>{product.price} €</h3> 
-          } />
-          <LabelAndTitle label="Pourcentage taxe" child={
-         <h3>{product.tax} %</h3> 
-          } />
-          <LabelAndTitle label="coût" child={
-         <h3>{product.cost} €</h3> 
-          } />
-
+          <LabelAndTitle label="Créer par" child={<img src={creatorAvatar} alt="avatar" />} />
+          <LabelAndTitle label="Catégorie" child={<h3>{category.name}</h3>} />
+          <LabelAndTitle label="Unité" child={<h3>{product.unity}</h3>} />
+          <LabelAndTitle label="Prix" child={<h3>{product.price} €</h3>} />
+          <LabelAndTitle label="Pourcentage taxe" child={<h3>{product.tax} %</h3>} />
+          <LabelAndTitle label="coût" child={<h3>{product.cost} €</h3>} />
         </div>
       </div>
     </AsideContainer>
   );
 };
 
-const AsideContainer = styled.div`
+interface LabelAndTitleProps {
+  label: string;
+  child: React.ReactNode;
+}
+
+const LabelAndTitle: React.FC<LabelAndTitleProps> = ({ label, child }) => {
+  return (
+    <LabelAndTitleStyled>
+      <span>{label}</span>
+      <div className="flex">{child}</div>
+    </LabelAndTitleStyled>
+  );
+};
+
+const AsideContainer = styled.div<{ open: boolean }>`
   position: fixed;
   background-color: #fff;
   box-shadow: rgba(0, 0, 0, 0.08) 0px 6px 30px;
@@ -117,35 +116,31 @@ const AsideContainer = styled.div`
     display: flex;
     flex-direction: column;
 
-    @media (min-width: 1200px)
-    {
+    @media (min-width: 1200px) {
       .css-u5c54l {
         font-size: 1.0417rem;
+      }
     }
-  }
 
-
-@media (min-width: 900px) {
-    .css-u5c54l {
+    @media (min-width: 900px) {
+      .css-u5c54l {
         font-size: 1.0417rem;
+      }
     }
 
-}
-
-@media (min-width: 600px) 
-{
-    .css-u5c54l {
+    @media (min-width: 600px) {
+      .css-u5c54l {
         font-size: 1.0417rem;
+      }
     }
-}
-.css-u5c54l {
-    margin: 0px;
-    font-family: "Plus Jakarta Sans", sans-serif;
-    font-weight: 700;
-    font-size: 1.0625rem;
-    line-height: 1.2;
-}
-    
+
+    .css-u5c54l {
+      margin: 0px;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-weight: 700;
+      font-size: 1.0625rem;
+      line-height: 1.2;
+    }
 
     .container_img {
       display: flex;
@@ -188,16 +183,7 @@ const AsideContainer = styled.div`
   }
 `;
 
-const LabelAndTitle = ({ label, child }: any) => {
-  return (
-    <LabelAndTitleStyled>
-      <span>{label}</span>
-      <div className="flex">
-      {child}
-      </div>
-    </LabelAndTitleStyled>
-  );
-};
+
 
 const LabelAndTitleStyled = styled.div`
   display: flex;
@@ -209,11 +195,9 @@ const LabelAndTitleStyled = styled.div`
     line-height: 1.66;
     color: rgb(108, 115, 127);
     flex: 1;
-
   }
 
-  .flex{
-
+  .flex {
     flex: 1.8;
   }
 
@@ -230,6 +214,5 @@ const LabelAndTitleStyled = styled.div`
     object-fit: cover;
   }
 `;
-
 
 export default ProductEditor;

@@ -1,22 +1,21 @@
 import TitlePage from "../../../../components/TitlePage";
 import styled from "styled-components";
-import { IoIosSearch } from "react-icons/io";
 import { useState } from "react";
-import Input from "../../../../components/Input";
 import ProductCard from "../../../../components/Card";
 import ProductEditor from "./ProductEditor";
 import Tresor from "../../../../assets/avantar/avatar-marcus.png";
 import { fakeProductsMenu } from "../../../../data/data_products";
 import { fakeCategoriesMenu } from "../../../../data/category_product";
+import ContainerSearch from "./ContainerSearch";
 
-export default function Menu() {
-  const [products, setProducts] = useState(fakeProductsMenu);
-  const [search, setSearch] = useState("");
-  const [category, setCategory] = useState("");
-  const [selectedProduct, setSelectedProduct] = useState(null);
-  const [asideOpen, setAsideOpen] = useState(false);
+export default function Menu(): JSX.Element {
+  const [products, setProducts] = useState<any[]>(fakeProductsMenu);
+  const [search, setSearch] = useState<string>("");
+  const [category, setCategory] = useState<string>("");
+  const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
+  const [asideOpen, setAsideOpen] = useState<boolean>(false);
 
-  const onSearch = (e) => {
+  const onSearch = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const searchValue = e.target.value.toLowerCase();
     setSearch(searchValue);
     const filteredProducts = fakeProductsMenu.filter((product) =>
@@ -25,7 +24,7 @@ export default function Menu() {
     setProducts(filteredProducts);
   };
 
-  const onCategoryChange = (e) => {
+  const onCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>): void => {
     const selectedCategory = e.target.value;
     setCategory(selectedCategory);
     const filteredProducts = selectedCategory
@@ -36,16 +35,16 @@ export default function Menu() {
     setProducts(filteredProducts);
   };
 
-  const onProductClick = (product) => {
+  const onProductClick = (product: any): void => {
     setSelectedProduct(product);
     setAsideOpen(true);
   };
 
-  const closeAside = () => {
+  const closeAside = (): void => {
     setAsideOpen(false);
     setTimeout(() => {
       setSelectedProduct(null);
-    }, 300); // Adjust this timeout to match your transition duration
+    }, 300);
   };
 
   return (
@@ -70,23 +69,7 @@ export default function Menu() {
 
       <div className="main_container">
         <div className="flex1">
-          <div className="input_search_container">
-            <div className="form_container">
-              <IoIosSearch />
-              <Input placeholder="Recherche" onChange={onSearch} />
-            </div>
-
-            <div className="select_category_container">
-              <select value={category} onChange={onCategoryChange}>
-                <option value="">Tous</option>
-                {fakeCategoriesMenu.map((cat) => (
-                  <option key={cat.id} value={cat.id}>
-                    {cat.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
+          <ContainerSearch onSearch={onSearch} onCategoryChange={onCategoryChange} category={category} />
 
           <div className="container_cards">
             {products.map((product) => (
@@ -130,63 +113,7 @@ const MenuStyled = styled.div`
   }
 
   .input_search_container {
-    background-color: #fff;
-    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 2px;
-    border-radius: 20px;
-    display: flex;
-    padding: 16px;
-    width: 100%;
-    gap: 20px;
-    align-items: center;
-
-    .form_container {
-      font-size: 1rem;
-      font-weight: 400;
-      cursor: text;
-      display: flex;
-      align-items: center;
-      width: 100%;
-      border-radius: 8px;
-      padding-left: 14px;
-      border: 1px solid rgb(209, 213, 219);
-      transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-      height: 50px;
-
-      &:hover {
-        background-color: rgba(17, 25, 39, 0.04);
-      }
-
-      svg {
-        margin-right: 10px;
-        font-size: 1.6em;
-        background-color: transparent;
-      }
-
-      input {
-        color: currentcolor;
-        border: 0px;
-        box-sizing: content-box;
-        background: none;
-        height: 1.4375em;
-        margin: 0px;
-        -webkit-tap-highlight-color: transparent;
-        display: block;
-        min-width: 0px;
-        width: 100%;
-        animation-name: mui-auto-fill-cancel;
-        animation-duration: 10ms;
-        padding: 16.5px 14px 16.5px 0px;
-        font-size: 14px;
-        font-weight: 500;
-        line-height: 24px;
-      }
-
-      &:focus-within {
-        border: 2.6px solid rgb(99, 102, 241);
-        background-color: #fff;
-      }
-    }
+    
   }
 
   .aside {
