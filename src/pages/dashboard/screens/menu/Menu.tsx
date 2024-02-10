@@ -9,7 +9,6 @@ import { fakeCategoriesMenu } from "../../../../data/category_product";
 import ContainerSearch from "./ContainerSearch";
 import convertirCaracteresSpeciaux from "../../../../utils/main_utils";
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
-import CategoryRings from "./CategoryRings";
 
 export default function Menu(): JSX.Element {
   const [products, setProducts] = useState<any[]>(fakeProductsMenu);
@@ -139,7 +138,8 @@ export default function Menu(): JSX.Element {
           </ContainerChangePage>
         </div>
         <div className="aside">
-          <CategoryRings categories={fakeCategoriesMenu} products={products} />
+          <h2>Categories</h2>
+          {/* <CategoryRings  /> */}
         </div>
       </div>
     </MenuStyled>
