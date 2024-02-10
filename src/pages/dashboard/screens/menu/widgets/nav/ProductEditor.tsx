@@ -2,12 +2,13 @@ import styled from "styled-components";
 import { IoCloseOutline } from "react-icons/io5";
 import { SlPencil } from "react-icons/sl";
 import { CiStar } from "react-icons/ci";
+import { Category, Product } from "../../../../../../types/base_interface";
 
 interface ProductEditorProps {
-  product: any;
+  product: Product;
   isOpen: boolean;
   onClose: () => void;
-  category: any;
+  category: Category;
   creatorAvatar: string;
 }
 

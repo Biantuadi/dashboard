@@ -1,12 +1,24 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faAngleDoubleRight,
-} from "@fortawesome/free-solid-svg-icons";
+import { faAngleDoubleRight } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
-const mesDatas = [
+interface Transaction {
+  id: number;
+  date: string;
+  name: string;
+  amount: number;
+  status: "valider" | "annuler"; // Define a union type for status
+}
+
+interface DateSplit {
+  day: number;
+  month: string;
+  year: number;
+}
+
+const mesDatas: Transaction[] = [
   {
     id: 1,
     date: "2021-10-10",
@@ -14,37 +26,10 @@ const mesDatas = [
     amount: 453,
     status: "valider",
   },
-  {
-    id: 1,
-    date: "2021-10-13",
-    name: "Thom",
-    amount: 2600,
-    status: "annuler",
-  },
-  {
-    id: 2,
-    date: "2021-10-18",
-    name: "Jean",
-    amount: 3250,
-    status: "valider",
-  },
-  {
-    id: 3,
-    date: "2021-10-10",
-    name: "Jean",
-    amount: 530,
-    status: "valider",
-  },
-  {
-    id: 2,
-    date: "2021-10-10",
-    name: "miché",
-    amount: 1000,
-    status: "annuler",
-  },
+  // Add more transaction data here
 ];
 
-const months = [
+const months: string[] = [
   "Jan",
   "Feb",
   "Mar",
@@ -60,11 +45,11 @@ const months = [
 ];
 
 export default function JobTransactions() {
-  const [activeCategory, setActiveCategory] = useState("Tout");
-  const [transactions, setTransactions] = useState([...mesDatas]);
-  const [showAllTransactions, setShowAllTransactions] = useState(false);
+  const [activeCategory, setActiveCategory] = useState<string>("Tout");
+  const [transactions, setTransactions] = useState<Transaction[]>([...mesDatas]);
+  const [showAllTransactions, setShowAllTransactions] = useState<boolean>(false);
 
-  const handleCategoryChange = (category: any) => {
+  const handleCategoryChange = (category: string): void => {
     setActiveCategory(category);
     switch (category) {
       case "Valider":
@@ -79,7 +64,7 @@ export default function JobTransactions() {
     setShowAllTransactions(false);
   };
 
-  const splitDate = (date: any) => {
+  const splitDate = (date: string): DateSplit => {
     const dateObj = new Date(date);
     return {
       day: dateObj.getDate(),
@@ -161,6 +146,7 @@ export default function JobTransactions() {
     </JobTransactionsStyled>
   );
 }
+
 
 const JobTransactionsStyled = styled.div`
   display: flex;

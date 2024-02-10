@@ -1,22 +1,23 @@
 import styled from "styled-components";
 import { CiStar } from "react-icons/ci";
 import { IoMdMore } from "react-icons/io";
+import { Category, Product } from "../../../../../../types/base_interface";
 
 interface Props {
-    product: any;
-    category: any;
-    onClick?: () => void;
-    
+  product: Product;
+  category: Category;
+  onClick?: () => void;
 }
 const ProductCard = ({ product, category, onClick }: Props) => (
-
-  
   <Card onClick={onClick}>
     <header>
       <CiStar />
       <IoMdMore />
     </header>
-    <img src={product.iconProduct ? product.iconProduct : category.icon } alt={product.name} />
+    <img
+      src={product.iconProduct ? product.iconProduct : category.icon}
+      alt={product.name}
+    />
     <CardInfo>
       <ProductName>{product.name}</ProductName>
       <hr />
@@ -83,7 +84,6 @@ const CardInfo = styled.div`
   display: flex;
   flex-direction: column;
   gap: 5px;
-  
 `;
 
 const ProductName = styled.h3`

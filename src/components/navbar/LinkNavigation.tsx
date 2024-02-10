@@ -9,7 +9,6 @@ interface LinkNavigationProps {
 
 export default function LinkNavigation({ to, label, icon, end }: LinkNavigationProps) {
   return (
-    // @ts-ignore
     <NavLink className={({ isActive }) => isActive? "nav_item active": 'nav_item'} to={to} end={end}>
       {icon}
       <span className="text">{label}</span>

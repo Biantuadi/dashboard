@@ -3,10 +3,11 @@ import styled from "styled-components";
 import ProductCard from "./widgets/product/Card";
 import ProductEditor from "./widgets/nav/ProductEditor";
 import Tresor from "../../../../assets/avantar/avatar-marcus.png";
-import { fakeCategoriesMenu } from "../../../../data/category_product";
 import ContainerSearch from "./widgets/ContainerSearch";
 import ContainerChangePage from "./widgets/ContainerChangePage";
 import { useMenuFunctions } from "./widgets/functions/MenuFunctions";
+import { fakeCategoriesMenu } from "../../../../data/category_product";
+import { Category } from "../../../../types/base_interface";
 
 export default function Menu(): JSX.Element {
   const {
@@ -26,7 +27,7 @@ export default function Menu(): JSX.Element {
     closeAside,
   } = useMenuFunctions();
 
-  
+  console.log(search);
 
   return (
     <MenuStyled>
@@ -37,9 +38,11 @@ export default function Menu(): JSX.Element {
           product={selectedProduct}
           isOpen={asideOpen}
           onClose={closeAside}
-          category={fakeCategoriesMenu.find(
-            (cat) => cat.id === selectedProduct.category_id
-          )}
+          category={
+            fakeCategoriesMenu.find(
+              (cat) => cat.id === selectedProduct.category_id
+            ) as Category
+          }
           creatorAvatar={Tresor}
         />
       )}
@@ -57,9 +60,11 @@ export default function Menu(): JSX.Element {
               <ProductCard
                 key={product.id}
                 product={product}
-                category={fakeCategoriesMenu.find(
-                  (cat) => cat.id === product.category_id
-                )}
+                category={
+                  fakeCategoriesMenu.find(
+                    (cat) => cat.id === product.category_id
+                  ) as Category
+                }
                 onClick={() => onProductClick(product)}
               />
             ))}

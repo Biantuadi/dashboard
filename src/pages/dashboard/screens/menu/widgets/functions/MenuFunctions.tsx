@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { fakeProductsMenu } from "../../../../../../data/data_products";
 import convertirCaracteresSpeciaux from "../../../../../../utils/main_utils";
+import { UseMenuFunctionsReturn } from "../../../../../../types/menu_page_interface";
+import { Product } from "../../../../../../types/base_interface";
 
-export function useMenuFunctions() {
-  const [products, setProducts] = useState<any[]>(fakeProductsMenu);
+export function useMenuFunctions(): UseMenuFunctionsReturn {
+  const [products, setProducts] = useState<Product[]>(fakeProductsMenu);
   const [search, setSearch] = useState<string>("");
   const [category, setCategory] = useState<string>("");
-  const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [asideOpen, setAsideOpen] = useState<boolean>(false);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const productsPerPage: number = 9;
@@ -47,7 +49,7 @@ export function useMenuFunctions() {
     setCurrentPage(1); // Reset page number on category change
   };
 
-  const onProductClick = (product: any): void => {
+  const onProductClick = (product: Product): void => {
     setSelectedProduct(product);
     setAsideOpen(true);
   };
@@ -62,7 +64,7 @@ export function useMenuFunctions() {
   // Calculate the index range of products to display based on the current page
   const indexOfLastProduct: number = currentPage * productsPerPage;
   const indexOfFirstProduct: number = indexOfLastProduct - productsPerPage;
-  const currentProducts: any[] = products.slice(
+  const currentProducts: Product[] = products.slice(
     indexOfFirstProduct,
     indexOfLastProduct
   );
