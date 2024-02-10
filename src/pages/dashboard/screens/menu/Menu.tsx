@@ -7,6 +7,9 @@ import Tresor from "../../../../assets/avantar/avatar-marcus.png";
 import { fakeProductsMenu } from "../../../../data/data_products";
 import { fakeCategoriesMenu } from "../../../../data/category_product";
 import ContainerSearch from "./ContainerSearch";
+import convertirCaracteresSpeciaux from "../../../../utils/main_utils";
+import { GrFormNext, GrFormPrevious } from "react-icons/gr";
+import CategoryRings from "./CategoryRings";
 
 export default function Menu(): JSX.Element {
   const [products, setProducts] = useState<any[]>(fakeProductsMenu);
@@ -14,17 +17,31 @@ export default function Menu(): JSX.Element {
   const [category, setCategory] = useState<string>("");
   const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
   const [asideOpen, setAsideOpen] = useState<boolean>(false);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const productsPerPage: number = 9;
 
-  console.log(search);
-  
+  const onPageNext = (): void => {
+    if (currentPage < Math.ceil(products.length / productsPerPage)) {
+      setCurrentPage((prevPage) => prevPage + 1);
+    }
+  };
+
+  const onPagePrevious = (): void => {
+    if (currentPage > 1) {
+      setCurrentPage((prevPage) => prevPage - 1);
+    }
+  };
 
   const onSearch = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const searchValue = e.target.value.toLowerCase();
     setSearch(searchValue);
     const filteredProducts = fakeProductsMenu.filter((product) =>
-      product.name.toLowerCase().includes(searchValue)
+      convertirCaracteresSpeciaux(product.name.toLowerCase()).includes(
+        convertirCaracteresSpeciaux(searchValue)
+      )
     );
     setProducts(filteredProducts);
+    setCurrentPage(1); // Reset page number on search
   };
 
   const onCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>): void => {
@@ -36,6 +53,7 @@ export default function Menu(): JSX.Element {
         )
       : fakeProductsMenu;
     setProducts(filteredProducts);
+    setCurrentPage(1); // Reset page number on category change
   };
 
   const onProductClick = (product: any): void => {
@@ -50,13 +68,17 @@ export default function Menu(): JSX.Element {
     }, 300);
   };
 
+  // Calculate the index range of products to display based on the current page
+  const indexOfLastProduct: number = currentPage * productsPerPage;
+  const indexOfFirstProduct: number = indexOfLastProduct - productsPerPage;
+  const currentProducts: any[] = products.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
+  );
+
   return (
     <MenuStyled>
-      <TitlePage
-        text="Menu"
-        button_text="+ Ajouter"
-        onClick={() => {}}
-      />
+      <TitlePage text="Menu" button_text="+ Ajouter" onClick={() => {}} />
 
       {selectedProduct && (
         <ProductEditor
@@ -72,10 +94,14 @@ export default function Menu(): JSX.Element {
 
       <div className="main_container">
         <div className="flex1">
-          <ContainerSearch onSearch={onSearch} onCategoryChange={onCategoryChange} category={category} />
+          <ContainerSearch
+            onSearch={onSearch}
+            onCategoryChange={onCategoryChange}
+            category={category}
+          />
 
           <div className="container_cards">
-            {products.map((product) => (
+            {currentProducts.map((product) => (
               <ProductCard
                 key={product.id}
                 product={product}
@@ -86,12 +112,70 @@ export default function Menu(): JSX.Element {
               />
             ))}
           </div>
+
+          <ContainerChangePage className="change_page_next_cards">
+            <div className="text_container">
+              <p>
+                Page {currentPage} sur{" "}
+                {Math.ceil(products.length / productsPerPage)}
+              </p>
+            </div>
+
+            <div className="icons_container">
+              <GrFormPrevious
+                onClick={onPagePrevious}
+                style={{ color: currentPage === 1 ? "rgb(108, 115, 127)" : "" }}
+              />
+              <GrFormNext
+                onClick={onPageNext}
+                style={{
+                  color:
+                    currentPage === Math.ceil(products.length / productsPerPage)
+                      ? "rgb(108, 115, 127)"
+                      : "",
+                }}
+              />
+            </div>
+          </ContainerChangePage>
         </div>
-        <div className="aside">Contenu de la barre latérale</div>
+        <div className="aside">
+          <CategoryRings categories={fakeCategoriesMenu} products={products} />
+        </div>
       </div>
     </MenuStyled>
   );
 }
+
+const ContainerChangePage = styled.div`
+  display: flex;
+  align-items: center;
+  align-self: flex-end;
+  gap: 20px;
+
+  p {
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.57;
+    flex-shrink: 0;
+  }
+
+  .icons_container {
+    display: flex;
+    svg {
+      cursor: pointer;
+      transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+      font-size: 1.5rem;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      padding: 5px;
+
+      &:hover {
+        background-color: rgba(108, 115, 127, 0.04);
+      }
+    }
+  }
+`;
 
 const MenuStyled = styled.div`
   background-color: #fdfdfd;
@@ -116,7 +200,6 @@ const MenuStyled = styled.div`
   }
 
   .input_search_container {
-    
   }
 
   .aside {
@@ -151,5 +234,8 @@ const MenuStyled = styled.div`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+  }
+
+  .change_page_next_cards {
   }
 `;
