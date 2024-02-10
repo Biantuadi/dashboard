@@ -15,6 +15,9 @@ export default function Menu(): JSX.Element {
   const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
   const [asideOpen, setAsideOpen] = useState<boolean>(false);
 
+  console.log(search);
+  
+
   const onSearch = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const searchValue = e.target.value.toLowerCase();
     setSearch(searchValue);
