@@ -26,7 +26,34 @@ const mesDatas: Transaction[] = [
     amount: 453,
     status: "valider",
   },
-  // Add more transaction data here
+  {
+    id: 1,
+    date: "2021-10-13",
+    name: "Thom",
+    amount: 2600,
+    status: "annuler",
+  },
+  {
+    id: 2,
+    date: "2021-10-18",
+    name: "Jean",
+    amount: 3250,
+    status: "valider",
+  },
+  {
+    id: 3,
+    date: "2021-10-10",
+    name: "Jean",
+    amount: 530,
+    status: "valider",
+  },
+  {
+    id: 2,
+    date: "2021-10-10",
+    name: "miché",
+    amount: 1000,
+    status: "annuler",
+  },
 ];
 
 const months: string[] = [

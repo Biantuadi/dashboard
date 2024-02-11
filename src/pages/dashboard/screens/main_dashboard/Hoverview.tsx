@@ -5,16 +5,42 @@ import { IoCloseOutline } from "react-icons/io5";
 import IconDone from "../../../../assets/icons/done.svg";
 import IconInProgress from "../../../../assets/icons/in_progress.svg";
 import IconWaiting from "../../../../assets/icons/waiting.svg";
-import { Task } from "./TaskCard";
+import { TaskStatusContainer } from "./TaskStatusContainer";
 import UpdateSettings from "./cards_grid/UpdateSettings_1";
 import EventsUpcomming from "./cards_grid/EventsUpcomming_3";
 import JobTransactions from "./cards_grid/JobTransactions_2";
 import TitlePage from "../../../../components/TitlePage";
 
+const fakeTasks = [
+  {
+    title: "faire le ménage",
+    status: "Terminé",
+  },
+  {
+    title: "faire la vaisselle",
+    status: "En attente",
+  },
+  {
+    title: "faire les courses",
+    status: "Terminé",
+  },
+  {
+    title: "faire le ménage",
+    status: "En cours",
+  },
+  {
+    title: "faire la vaisselle",
+    status: "En cours",
+  },
+  
+
+]
+
 
 export default function Hoverview() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedTask, setSelectedTask] = useState("");
+  const [tasks, setTasks] = useState(fakeTasks);
 
   const handleOpenManageTasks = (taskLabel: string) => {
     setSelectedTask(taskLabel);
@@ -40,26 +66,34 @@ export default function Hoverview() {
           <li className={selectedTask === "En cours" ? "active" : ""} onClick={() => handleOpenManageTasks("En cours")}>En cours</li>
           <li className={selectedTask === "En attente" ? "active" : ""} onClick={() => handleOpenManageTasks("En attente")}>En attente</li>
         </nav>
-        <div className="content">{selectedTask}</div>
+        <div className="content">
+          <ul>
+            {tasks
+              .filter((task) => task.status === selectedTask)
+              .map((task, index) => (
+                <li key={index}>{task.title}</li>
+              ))}
+          </ul>
+        </div>
       </ManageTasksStyled>
 
       <div className="tasks_container">
-        <Task
+        <TaskStatusContainer
           label="Terminé"
           image={IconDone}
-          number_of_task={10}
+          number_of_task={tasks.filter((task) => task.status === "Terminé").length}
           openManageTasks={() => handleOpenManageTasks("Terminé")}
         />
-        <Task
+        <TaskStatusContainer
           label="En cours"
           image={IconInProgress}
-          number_of_task={0}
+          number_of_task={tasks.filter((task) => task.status === "En cours").length}
           openManageTasks={() => handleOpenManageTasks("En cours")}
         />
-        <Task
+        <TaskStatusContainer
           label="En attente"
           image={IconWaiting}
-          number_of_task={5}
+          number_of_task={tasks.filter((task) => task.status === "En attente").length}
           openManageTasks={() => handleOpenManageTasks("En attente")}
         />
       </div>

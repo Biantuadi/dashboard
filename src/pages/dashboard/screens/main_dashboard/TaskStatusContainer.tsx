@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import {FaArrowRight} from "react-icons/fa";
 
-interface TaskProps {
+interface TaskStatusContainerProps {
   label: string;
   image: string;
   number_of_task: number;
@@ -9,14 +9,14 @@ interface TaskProps {
   
 }
 
-export function Task({
+export function TaskStatusContainer({
   label,
   image,
   number_of_task,
   openManageTasks,
-}: TaskProps) {
+}: TaskStatusContainerProps) {
   return (
-    <TaskStyled>
+    <TaskStatusContainerStyled>
       <div className="container_task_img_text">
         <div className="container_img">
           <img src={image} alt={label} />
@@ -33,11 +33,11 @@ export function Task({
        </span>
        <FaArrowRight />
       </button>
-    </TaskStyled>
+    </TaskStatusContainerStyled>
   );
 }
 
-const TaskStyled = styled.div`
+const TaskStatusContainerStyled = styled.div`
   display: flex;
   align-items: flex-start;
   flex-direction: column;
