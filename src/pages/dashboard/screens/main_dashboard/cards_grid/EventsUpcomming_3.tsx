@@ -4,79 +4,12 @@ import { faAngleDoubleRight } from "@fortawesome/free-solid-svg-icons"
 import { Link } from "react-router-dom"
 import { useState } from "react"
 import { FiCalendar } from "react-icons/fi"
-
-const fakeEvents = [
-  {
-    id: 1,
-    date: "2021-10-10",
-    title: "Mariage 💍",
-    start: "10:00",
-    end: "12:00",
-    amount: 453,
-  },
-  {
-    id: 1,
-    date: "2021-10-13",
-    title: "Anniversaire 🎂",
-    start: "10:00",
-    end: "12:00",
-    amount: 2600,
-  },
-  {
-    id: 2,
-    date: "2021-10-18",
-    title: "Celebration 🎉",
-    start: "10:00",
-    end: "12:00",
-    amount: 3250,
-  },
-  {
-    id: 3,
-    date: "2021-10-10",
-    title: "Mariage 💍",
-    start: "10:00",
-    end: "12:00",
-    amount: 530,
-  },
-  {
-    id: 2,
-    date: "2021-10-10",
-    title: "Anniversaire 🎂",
-    start: "10:00",
-    end: "12:00",
-    amount: 1000,
-  },
-
-]
-
-const months = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-]
+import { fakeContrats } from "../../../../../data/contrat"
+import { splitDate } from "../../../../../utils/main_utils"
 
 export default function EventsUpcomming() {
-  const [events] = useState(fakeEvents)
+  const [events] = useState(fakeContrats)
   const [showAllevents] = useState(false)
-
-  const splitDate = (date: string) => {
-    const [year, month, day] = date.split("-")
-    return {
-      year,
-      month: months[parseInt(month) - 1],
-      day,
-    }
-  }
-
 
   return (
     <EventsUpcommingStyled className="collectif_grid">
@@ -99,7 +32,7 @@ export default function EventsUpcomming() {
                   <h4 className="day">{splitDate(event.date).day}</h4>
                 </div>
                 <div>
-                  <p className="title">{event.title}</p>
+                  <p className="title">{event.type}</p>
                   <span className="description">
                     {event.start} - {event.end} 
                   </span>

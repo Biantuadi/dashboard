@@ -9,59 +9,12 @@ import EventsUpcomming from "./cards_grid/EventsUpcomming_3";
 import JobTransactions from "./cards_grid/JobTransactions_2";
 import TitlePage from "../../../../components/TitlePage";
 import ManageContrat from "./nav_right/ManageContrat";
-
-const fakeContrats = [
-  {
-    title: "Contrat 1",
-    type: "Cérémonie 🎊",
-    status: "Validé",
-    start: "10:00",
-    end: "12:00",
-    amount: 453,
-    date: "2021-10-10",
-  },
-  {
-    title: "Contrat 2",
-    type: "Marriage 💍",
-    status: "Annulé",
-    start: "10:00",
-    end: "12:00",
-    amount: 2600,
-    date: "2021-10-13",
-  },
-  {
-    title: "Contrat 3",
-    type: "Anniversaire 🎂",
-    status: "annulé",
-    start: "10:00",
-    end: "12:00",
-    amount: 3250,
-    date: "2021-10-18",
-  },
-  {
-    title: "Contrat 4",
-    type: "Cérémonie 🎊",
-    status: "En cours",
-    start: "10:00",
-    end: "12:00",
-    amount: 453,
-    date: "2021-10-10",
-  },
-  {
-    title: "Contrat 5",
-    type: "Cérémonie 🎊",
-    status: "En cours",
-    start: "10:00",
-    end: "12:00",
-    amount: 453,
-    date: "2021-10-10",
-  },
-];
+import { fakeContrats } from "../../../../data/contrat";
 
 export default function Hoverview() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedContrat, setSelectedContrat] = useState("");
-  const [contrats] = useState(fakeContrats);
+  const [contrats, setContrats] = useState(fakeContrats);
 
   const handleOpenManageContrat = (taskLabel: string) => {
     setSelectedContrat(taskLabel);
@@ -81,9 +34,7 @@ export default function Hoverview() {
         onClick={() => {}}
       />
 
-      <ManageContrat isOpen={isOpen} handleCloseManageContrat={handleCloseManageContrat} contrats={contrats} selectedContrat={selectedContrat} handleOpenManageContrat={handleOpenManageContrat} />
-
-     
+      <ManageContrat isOpen={isOpen} handleCloseManageContrat={handleCloseManageContrat} contrats={contrats} selectedContrat={selectedContrat} handleOpenManageContrat={handleOpenManageContrat} setContrats={setContrats} />
 
       <div className="contrats_container">
         <ContratStatusContainer

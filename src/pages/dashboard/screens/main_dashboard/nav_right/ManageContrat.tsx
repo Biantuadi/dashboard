@@ -1,55 +1,99 @@
 import { CiStar } from "react-icons/ci";
 import { IoCloseOutline } from "react-icons/io5";
 import styled from "styled-components";
-
-
+import { IoMdMore } from "react-icons/io";
+import { splitDate } from "../../../../../utils/main_utils";
 
 interface ManageContratProps {
   isOpen: boolean;
   handleCloseManageContrat: () => void;
   contrats: any[];
   selectedContrat: string;
+    setContrats?: (contrats: any[]) => void;
   handleOpenManageContrat: (taskLabel: string) => void;
 }
 
-export default function ManageContrat({ isOpen, handleCloseManageContrat, contrats, selectedContrat, handleOpenManageContrat }: ManageContratProps) {
+export default function ManageContrat({
+  isOpen,
+  handleCloseManageContrat,
+  contrats,
+//   setContrats,
+  selectedContrat,
+  handleOpenManageContrat,
+}: ManageContratProps) {
+
+    // const changeStatus = (newStatus: string, index: number) => {
+    //     const updatedContrats = [...contrats];
+    //     updatedContrats[index].status = newStatus;
+    //     // Mettre à jour l'état avec la nouvelle liste des contrats
+    //     setContrats(updatedContrats); // Assurez-vous d'avoir défini setContrats dans votre composant parent
+    //   };
+    
   return (
     <ManageContratsStyled open={isOpen}>
-    <header className="header">
-      <CiStar />
-      <IoCloseOutline onClick={handleCloseManageContrat} />
-    </header>
-    <nav>
-      <li 
-        className={selectedContrat === "Validé" ? "active classic" : "classic"}
-        onClick={() => handleOpenManageContrat("Validé")}
-      >
-        Validé
-      </li>
-      <li
-        className={selectedContrat === "En cours" ? "active classic" : "classic"}
-        onClick={() => handleOpenManageContrat("En cours")}
-      >
-        En cours
-      </li>
-      <li
-        className={selectedContrat === "Annulé" ? "active classic" : "classic"}
-        onClick={() => handleOpenManageContrat("Annulé")}
-      >
-        Annulé
-      </li>
-    </nav>
-    <div className="content">
-      <ul>
+      <header className="header">
+        <CiStar />
+        <IoCloseOutline onClick={handleCloseManageContrat} />
+      </header>
+      <nav>
+        <li
+          className={
+            selectedContrat === "Validé" ? "active classic" : "classic"
+          }
+          onClick={() => handleOpenManageContrat("Validé")}
+        >
+          {/* Validé ✅ */}
+            Validé
+        </li>
+        <li
+          className={
+            selectedContrat === "En cours" ? "active classic" : "classic"
+          }
+          onClick={() => handleOpenManageContrat("En cours")}
+        >
+          {/* En cours 🔄 */}
+            En cours
+        </li>
+        <li
+          className={
+            selectedContrat === "Annulé" ? "active classic" : "classic"
+          }
+          onClick={() => handleOpenManageContrat("Annulé")}
+        >
+          {/* Annulé ❌ */}
+            Annulé
+        </li>
+      </nav>
+      <div className="content">
         {contrats
           .filter((contrat) => contrat.status === selectedContrat)
           .map((contrat, index) => (
-            <li key={index}>{contrat.title}</li>
+            <div key={index} className="contrat_card">
+              <header>
+                <p>{contrat.type}</p>
+                <IoMdMore />
+                {/* <div className="container_change_status">
+                  <span onClick={() => changeStatus("Validé", index)}>Validé</span>
+                  <span onClick={() => changeStatus("En cours", index)}>En cours</span>
+                  <span onClick={() => changeStatus("Annulé", index)}>Annulé</span>
+                </div> */}
+              </header>
+              <span className="span-text status">{contrat.status}</span>
+              <p className="span-text">{contrat.description}</p>
+              <hr />
+              <div className="date">
+                <p>
+                  {splitDate(contrat.date).day} {splitDate(contrat.date).month}{" "}
+                  {splitDate(contrat.date).year}
+                </p>
+                <p>{contrat.start}</p>
+                <p>{contrat.end}</p>
+              </div>
+            </div>
           ))}
-      </ul>
-    </div>
-  </ManageContratsStyled>
-  )
+      </div>
+    </ManageContratsStyled>
+  );
 }
 
 const ManageContratsStyled = styled.div<{ open: boolean }>`
@@ -66,7 +110,7 @@ const ManageContratsStyled = styled.div<{ open: boolean }>`
 
   .header {
     display: flex;
-    padding:  20px;
+    padding: 20px;
     justify-content: flex-end;
     align-items: center;
     gap: 20px;
@@ -106,7 +150,72 @@ const ManageContratsStyled = styled.div<{ open: boolean }>`
 
       &.active {
         color: rgb(99, 102, 241);
-      border-bottom: 1.7px solid rgb(99, 102, 241);
+        border-bottom: 1.7px solid rgb(99, 102, 241);
+      }
+    }
+  }
+
+  .content {
+    padding: 20px;
+    overflow-y: auto;
+    height: calc(100% - 100px);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    /* scroll bar none */
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .contrat_card {
+    border-radius: 20px;
+    transition: 0.3s;
+    cursor: pointer;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.04) 0px 5px 22px,
+      rgba(0, 0, 0, 0.03) 0px 0px 0px 0.5px;
+      position: relative;
+
+    &:hover {
+      background-color: rgba(17, 25, 39, 0.04);
+    }
+  }
+
+  .span-text {
+  }
+
+  .status {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(99, 102, 241);
+  }
+
+  .date {
+    display: flex;
+    gap: 20px;
+    padding-top: 10px;
+    font-size: 14px;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    svg {
+      color: rgb(108, 115, 127);
+      transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+      cursor: pointer;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      padding: 5px;
+
+      &:hover {
+        background-color: rgba(108, 115, 127, 0.04);
       }
     }
   }
