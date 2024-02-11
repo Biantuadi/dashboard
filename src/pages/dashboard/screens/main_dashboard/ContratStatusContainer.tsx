@@ -1,43 +1,43 @@
 import styled from "styled-components";
 import {FaArrowRight} from "react-icons/fa";
 
-interface TaskStatusContainerProps {
+interface ContratStatusContainerProps {
   label: string;
   image: string;
-  number_of_task: number;
-  openManageTasks: () => void;
+  number_of_contrat: number;
+  openManageContrats: () => void;
   
 }
 
-export function TaskStatusContainer({
+export function ContratStatusContainer({
   label,
   image,
-  number_of_task,
-  openManageTasks,
-}: TaskStatusContainerProps) {
+  number_of_contrat,
+  openManageContrats,
+}: ContratStatusContainerProps) {
   return (
-    <TaskStatusContainerStyled>
-      <div className="container_task_img_text">
+    <ContratStatusContainerStyled>
+      <div className="container_contrat_img_text">
         <div className="container_img">
           <img src={image} alt={label} />
         </div>
         <div className="texts_infos">
           <span className="span-text my-label">{label}</span>
-          <h1 className="css-agywf3">{number_of_task}</h1>
+          <h1 className="css-agywf3">{number_of_contrat}</h1>
         </div>
       </div>
       <hr className="divider" />
-      <button className="container_see_more"  onClick={openManageTasks}>
+      <button className="container_see_more"  onClick={openManageContrats}>
        <span className="btn_see">
         Tout voir
        </span>
        <FaArrowRight />
       </button>
-    </TaskStatusContainerStyled>
+    </ContratStatusContainerStyled>
   );
 }
 
-const TaskStatusContainerStyled = styled.div`
+const ContratStatusContainerStyled = styled.div`
   display: flex;
   align-items: flex-start;
   flex-direction: column;
@@ -49,7 +49,7 @@ const TaskStatusContainerStyled = styled.div`
     rgba(0, 0, 0, 0.03) 0px 0px 0px 0.5px;
   flex: 1;
 
-  .container_task_img_text {
+  .container_contrat_img_text {
     display: flex;
     align-items: center;
     gap: 20px;

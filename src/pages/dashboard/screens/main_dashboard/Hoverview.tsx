@@ -1,100 +1,114 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { CiStar } from "react-icons/ci";
-import { IoCloseOutline } from "react-icons/io5";
 import IconDone from "../../../../assets/icons/done.svg";
 import IconInProgress from "../../../../assets/icons/in_progress.svg";
-import IconWaiting from "../../../../assets/icons/waiting.svg";
-import { TaskStatusContainer } from "./TaskStatusContainer";
+import IconAnnuler from "../../../../assets/icons/annule.svg";
+import { ContratStatusContainer } from "./ContratStatusContainer";
 import UpdateSettings from "./cards_grid/UpdateSettings_1";
 import EventsUpcomming from "./cards_grid/EventsUpcomming_3";
 import JobTransactions from "./cards_grid/JobTransactions_2";
 import TitlePage from "../../../../components/TitlePage";
+import ManageContrat from "./nav_right/ManageContrat";
 
-const fakeTasks = [
+const fakeContrats = [
   {
-    title: "faire le ménage",
-    status: "Terminé",
+    title: "Contrat 1",
+    type: "Cérémonie 🎊",
+    status: "Validé",
+    start: "10:00",
+    end: "12:00",
+    amount: 453,
+    date: "2021-10-10",
   },
   {
-    title: "faire la vaisselle",
-    status: "En attente",
+    title: "Contrat 2",
+    type: "Marriage 💍",
+    status: "Annulé",
+    start: "10:00",
+    end: "12:00",
+    amount: 2600,
+    date: "2021-10-13",
   },
   {
-    title: "faire les courses",
-    status: "Terminé",
+    title: "Contrat 3",
+    type: "Anniversaire 🎂",
+    status: "annulé",
+    start: "10:00",
+    end: "12:00",
+    amount: 3250,
+    date: "2021-10-18",
   },
   {
-    title: "faire le ménage",
+    title: "Contrat 4",
+    type: "Cérémonie 🎊",
     status: "En cours",
+    start: "10:00",
+    end: "12:00",
+    amount: 453,
+    date: "2021-10-10",
   },
   {
-    title: "faire la vaisselle",
+    title: "Contrat 5",
+    type: "Cérémonie 🎊",
     status: "En cours",
+    start: "10:00",
+    end: "12:00",
+    amount: 453,
+    date: "2021-10-10",
   },
-  
-
-]
-
+];
 
 export default function Hoverview() {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedTask, setSelectedTask] = useState("");
-  const [tasks, setTasks] = useState(fakeTasks);
+  const [selectedContrat, setSelectedContrat] = useState("");
+  const [contrats] = useState(fakeContrats);
 
-  const handleOpenManageTasks = (taskLabel: string) => {
-    setSelectedTask(taskLabel);
+  const handleOpenManageContrat = (taskLabel: string) => {
+    setSelectedContrat(taskLabel);
     setIsOpen(true);
   };
 
-  const handleCloseManageTasks = () => {
-    setSelectedTask("");
+  const handleCloseManageContrat = () => {
+    setSelectedContrat("");
     setIsOpen(false);
   };
 
   return (
     <HoverviewStyled>
-      <TitlePage text="Overview" button_text="+ Ajouter un contrat" onClick={() => {}} />
+      <TitlePage
+        text="Overview"
+        button_text="+ Ajouter un contrat"
+        onClick={() => {}}
+      />
 
-      <ManageTasksStyled open={isOpen}>
-        <header className="header">
-          <CiStar />
-          <IoCloseOutline onClick={handleCloseManageTasks} />
-        </header>
-        <nav>
-          <li className={selectedTask === "Terminé" ? "active" : ""} onClick={() => handleOpenManageTasks("Terminé")}>Terminé</li>
-          <li className={selectedTask === "En cours" ? "active" : ""} onClick={() => handleOpenManageTasks("En cours")}>En cours</li>
-          <li className={selectedTask === "En attente" ? "active" : ""} onClick={() => handleOpenManageTasks("En attente")}>En attente</li>
-        </nav>
-        <div className="content">
-          <ul>
-            {tasks
-              .filter((task) => task.status === selectedTask)
-              .map((task, index) => (
-                <li key={index}>{task.title}</li>
-              ))}
-          </ul>
-        </div>
-      </ManageTasksStyled>
+      <ManageContrat isOpen={isOpen} handleCloseManageContrat={handleCloseManageContrat} contrats={contrats} selectedContrat={selectedContrat} handleOpenManageContrat={handleOpenManageContrat} />
 
-      <div className="tasks_container">
-        <TaskStatusContainer
-          label="Terminé"
+     
+
+      <div className="contrats_container">
+        <ContratStatusContainer
+          label="Validé"
           image={IconDone}
-          number_of_task={tasks.filter((task) => task.status === "Terminé").length}
-          openManageTasks={() => handleOpenManageTasks("Terminé")}
+          number_of_contrat={
+            contrats.filter((contrat) => contrat.status === "Validé").length
+          }
+          openManageContrats={() => handleOpenManageContrat("Validé")}
         />
-        <TaskStatusContainer
+        <ContratStatusContainer
           label="En cours"
           image={IconInProgress}
-          number_of_task={tasks.filter((task) => task.status === "En cours").length}
-          openManageTasks={() => handleOpenManageTasks("En cours")}
+          number_of_contrat={
+            contrats.filter((contrat) => contrat.status === "En cours").length
+          }
+          openManageContrats={() => handleOpenManageContrat("En cours")}
         />
-        <TaskStatusContainer
-          label="En attente"
-          image={IconWaiting}
-          number_of_task={tasks.filter((task) => task.status === "En attente").length}
-          openManageTasks={() => handleOpenManageTasks("En attente")}
+        <ContratStatusContainer
+          label="Annulé"
+          image={IconAnnuler}
+          number_of_contrat={
+            contrats.filter((contrat) => contrat.status === "Annulé").length
+          }
+          openManageContrats={() => handleOpenManageContrat("Annulé")}
         />
       </div>
 
@@ -112,7 +126,6 @@ export default function Hoverview() {
   );
 }
 
-
 const HoverviewStyled = styled.div`
   background-color: #fdfdfd;
   height: 100%;
@@ -123,7 +136,7 @@ const HoverviewStyled = styled.div`
   gap: 45px;
   padding: 0 30px 50px 30px;
 
-  .tasks_container {
+  .contrats_container {
     display: flex;
     gap: 40px;
   }
@@ -156,67 +169,4 @@ const HoverviewStyled = styled.div`
   }
 `;
 
-const ManageTasksStyled = styled.div<{ open: boolean }>`
-  position: fixed;
-  background-color: #fff;
-  box-shadow: rgba(0, 0, 0, 0.08) 0px 6px 30px;
-  top: 0;
-  right: ${({ open }) => (open ? "0" : "-450px")};
-  bottom: 0;
-  width: 450px;
-  height: 100%;
-  z-index: 3000;
-  transition: right 0.3s ease-in-out;
 
-  .header {
-    display: flex;
-    padding: 40px 20px;
-    justify-content: flex-end;
-    align-items: center;
-    border-bottom: 1px solid rgb(242, 244, 247);
-    gap: 20px;
-
-    h2 {
-      font-size: 1.5rem;
-      font-weight: 600;
-    }
-
-    svg {
-      font-size: 1.5rem;
-      color: rgb(108, 115, 127);
-      transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-      cursor: pointer;
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
-      padding: 5px;
-
-      &:hover {
-        background-color: rgba(108, 115, 127, 0.04);
-      }
-    }
-  }
-
-  nav {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 20px;
-    border-bottom: 1px solid rgb(242, 244, 247);
-
-    li {
-      cursor: pointer;
-      font-weight: bold;
-      color: #666;
-      transition: color 0.3s;
-
-      &:hover {
-        color: #333;
-      }
-
-      &.active {
-        color: #000;
-      }
-    }
-  }
-`;
