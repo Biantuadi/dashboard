@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { GoSearch } from "react-icons/go";
 import { IoIosNotificationsOutline } from "react-icons/io";
 import { LuUsers } from "react-icons/lu";
-import Tresor from "../../../../assets/avantar/avatar-marcus.png";
-import TooltipC from "../../../../components/Tooltip";
+import Tresor from "../../../assets/avantar/avatar-marcus.png";
+import TooltipC from "../../../components/Tooltip";
 
 export default function Header() {
   const notificationCount = 5;

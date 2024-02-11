@@ -1,18 +1,20 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import {FaArrowRight} from "react-icons/fa";
+
+interface TaskProps {
+  label: string;
+  image: string;
+  number_of_task: number;
+  openManageTasks: () => void;
+  
+}
 
 export function Task({
   label,
   image,
-  see_more_link,
   number_of_task,
-}: {
-  label: string;
-  image: string;
-  see_more_link: string;
-  number_of_task: number;
-}) {
+  openManageTasks,
+}: TaskProps) {
   return (
     <TaskStyled>
       <div className="container_task_img_text">
@@ -24,15 +26,13 @@ export function Task({
           <h1 className="css-agywf3">{number_of_task}</h1>
         </div>
       </div>
-      {/* diviser */}
       <hr className="divider" />
-      <div className="container_see_more">
-       <Link to={see_more_link}>
+      <button className="container_see_more"  onClick={openManageTasks}>
+       <span className="btn_see">
         Tout voir
-       </Link>
+       </span>
        <FaArrowRight />
-
-      </div>
+      </button>
     </TaskStyled>
   );
 }
@@ -54,6 +54,22 @@ const TaskStyled = styled.div`
     align-items: center;
     gap: 20px;
     padding-left: 20px;
+  }
+
+  button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: rgba(17, 25, 39, 0.04);
+    }
   }
 
   h1{
@@ -101,7 +117,7 @@ const TaskStyled = styled.div`
       background-color: rgba(17, 25, 39, 0.04);
     }
 
-    a {
+    .btn_see{
       font-weight:500;
       font-size: 14px;
     

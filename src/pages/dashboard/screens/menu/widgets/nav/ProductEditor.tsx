@@ -3,6 +3,7 @@ import { IoCloseOutline } from "react-icons/io5";
 import { SlPencil } from "react-icons/sl";
 import { CiStar } from "react-icons/ci";
 import { Category, Product } from "../../../../../../types/base_interface";
+import LabelAndTitle from "../../../../LabelAndTitle";
 
 interface ProductEditorProps {
   product: Product;
@@ -42,19 +43,7 @@ const ProductEditor: React.FC<ProductEditorProps> = ({ product, isOpen, onClose,
   );
 };
 
-interface LabelAndTitleProps {
-  label: string;
-  child: React.ReactNode;
-}
 
-const LabelAndTitle: React.FC<LabelAndTitleProps> = ({ label, child }) => {
-  return (
-    <LabelAndTitleStyled>
-      <span>{label}</span>
-      <div className="flex">{child}</div>
-    </LabelAndTitleStyled>
-  );
-};
 
 const AsideContainer = styled.div<{ open: boolean }>`
   position: fixed;
@@ -188,34 +177,5 @@ const AsideContainer = styled.div<{ open: boolean }>`
 
 
 
-const LabelAndTitleStyled = styled.div`
-  display: flex;
-  align-items: center;
-
-  span {
-    font-size: 0.75rem;
-    font-weight: 500;
-    line-height: 1.66;
-    color: rgb(108, 115, 127);
-    flex: 1;
-  }
-
-  .flex {
-    flex: 1.8;
-  }
-
-  h3 {
-    font-size: 0.875rem;
-    font-weight: 500;
-    line-height: 1.57;
-  }
-
-  img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-`;
 
 export default ProductEditor;
