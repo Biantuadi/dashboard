@@ -9,7 +9,7 @@ interface ManageContratProps {
   handleCloseManageContrat: () => void;
   contrats: any[];
   selectedContrat: string;
-    setContrats?: (contrats: any[]) => void;
+  setContrats: (contrats: any[]) => void;
   handleOpenManageContrat: (taskLabel: string) => void;
 }
 
@@ -17,18 +17,9 @@ export default function ManageContrat({
   isOpen,
   handleCloseManageContrat,
   contrats,
-//   setContrats,
   selectedContrat,
   handleOpenManageContrat,
 }: ManageContratProps) {
-
-    // const changeStatus = (newStatus: string, index: number) => {
-    //     const updatedContrats = [...contrats];
-    //     updatedContrats[index].status = newStatus;
-    //     // Mettre à jour l'état avec la nouvelle liste des contrats
-    //     setContrats(updatedContrats); // Assurez-vous d'avoir défini setContrats dans votre composant parent
-    //   };
-    
   return (
     <ManageContratsStyled open={isOpen}>
       <header className="header">
@@ -42,8 +33,7 @@ export default function ManageContrat({
           }
           onClick={() => handleOpenManageContrat("Validé")}
         >
-          {/* Validé ✅ */}
-            Validé
+          Validé
         </li>
         <li
           className={
@@ -51,8 +41,7 @@ export default function ManageContrat({
           }
           onClick={() => handleOpenManageContrat("En cours")}
         >
-          {/* En cours 🔄 */}
-            En cours
+          En cours
         </li>
         <li
           className={
@@ -60,8 +49,7 @@ export default function ManageContrat({
           }
           onClick={() => handleOpenManageContrat("Annulé")}
         >
-          {/* Annulé ❌ */}
-            Annulé
+          Annulé
         </li>
       </nav>
       <div className="content">
@@ -72,11 +60,6 @@ export default function ManageContrat({
               <header>
                 <p>{contrat.type}</p>
                 <IoMdMore />
-                {/* <div className="container_change_status">
-                  <span onClick={() => changeStatus("Validé", index)}>Validé</span>
-                  <span onClick={() => changeStatus("En cours", index)}>En cours</span>
-                  <span onClick={() => changeStatus("Annulé", index)}>Annulé</span>
-                </div> */}
               </header>
               <span className="span-text status">{contrat.status}</span>
               <p className="span-text">{contrat.description}</p>
@@ -176,7 +159,7 @@ const ManageContratsStyled = styled.div<{ open: boolean }>`
     padding: 20px;
     box-shadow: rgba(0, 0, 0, 0.04) 0px 5px 22px,
       rgba(0, 0, 0, 0.03) 0px 0px 0px 0.5px;
-      position: relative;
+    position: relative;
 
     &:hover {
       background-color: rgba(17, 25, 39, 0.04);
