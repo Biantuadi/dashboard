@@ -38,12 +38,12 @@ export default function Hoverview() {
 
       <div className="contrats_container">
         <ContratStatusContainer
-          label="Validé"
+          label="Valider"
           image={IconDone}
           number_of_contrat={
-            contrats.filter((contrat) => contrat.status === "Validé").length
+            contrats.filter((contrat) => contrat.status === "Valider").length
           }
-          openManageContrats={() => handleOpenManageContrat("Validé")}
+          openManageContrats={() => handleOpenManageContrat("Valider")}
         />
         <ContratStatusContainer
           label="En cours"
@@ -54,12 +54,12 @@ export default function Hoverview() {
           openManageContrats={() => handleOpenManageContrat("En cours")}
         />
         <ContratStatusContainer
-          label="Annulé"
+          label="Annuler"
           image={IconAnnuler}
           number_of_contrat={
-            contrats.filter((contrat) => contrat.status === "Annulé").length
+            contrats.filter((contrat) => contrat.status === "Annuler").length
           }
-          openManageContrats={() => handleOpenManageContrat("Annulé")}
+          openManageContrats={() => handleOpenManageContrat("Annuler")}
         />
       </div>
 

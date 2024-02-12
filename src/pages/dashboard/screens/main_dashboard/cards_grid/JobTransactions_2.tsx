@@ -3,101 +3,29 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDoubleRight } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { splitDate } from "../../../../../utils/main_utils";
+import { Contrat, fakeContrats } from "../../../../../data/contrat";
 
-interface Transaction {
-  id: number;
-  date: string;
-  name: string;
-  amount: number;
-  status: "valider" | "annuler"; // Define a union type for status
-}
 
-interface DateSplit {
-  day: number;
-  month: string;
-  year: number;
-}
-
-const mesDatas: Transaction[] = [
-  {
-    id: 1,
-    date: "2021-10-10",
-    name: "Jean",
-    amount: 453,
-    status: "valider",
-  },
-  {
-    id: 1,
-    date: "2021-10-13",
-    name: "Thom",
-    amount: 2600,
-    status: "annuler",
-  },
-  {
-    id: 2,
-    date: "2021-10-18",
-    name: "Jean",
-    amount: 3250,
-    status: "valider",
-  },
-  {
-    id: 3,
-    date: "2021-10-10",
-    name: "Jean",
-    amount: 530,
-    status: "valider",
-  },
-  {
-    id: 2,
-    date: "2021-10-10",
-    name: "miché",
-    amount: 1000,
-    status: "annuler",
-  },
-];
-
-const months: string[] = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-];
 
 export default function JobTransactions() {
   const [activeCategory, setActiveCategory] = useState<string>("Tout");
-  const [transactions, setTransactions] = useState<Transaction[]>([...mesDatas]);
+  const [transactions, setTransactions] = useState<Contrat[]>([...fakeContrats]);
   const [showAllTransactions, setShowAllTransactions] = useState<boolean>(false);
 
   const handleCategoryChange = (category: string): void => {
     setActiveCategory(category);
     switch (category) {
       case "Valider":
-        setTransactions(mesDatas);
+        setTransactions(fakeContrats);
         break;
       case "Annuler":
-        setTransactions(mesDatas);
+        setTransactions(fakeContrats);
         break;
       default:
-        setTransactions([...mesDatas]);
+        setTransactions([...fakeContrats]);
     }
     setShowAllTransactions(false);
-  };
-
-  const splitDate = (date: string): DateSplit => {
-    const dateObj = new Date(date);
-    return {
-      day: dateObj.getDate(),
-      month: months[dateObj.getMonth()],
-      year: dateObj.getFullYear(),
-    };
   };
 
   return (
@@ -141,14 +69,14 @@ export default function JobTransactions() {
                   <h4 className="day">{splitDate(transaction.date).day}</h4>
                 </div>
                 <div>
-                  <p>{transaction.name}</p>
+                  <p>{transaction.title}</p>
                   <span className="description">Hello world</span>
                 </div>
               </div>
               <div className="status">
                 <span
                   className={
-                    transaction.status === "valider" ? "valider" : "annuler"
+                    transaction.status.toLowerCase() === "valider" ? "valider" : "annuler"
                   }
                 >
                   {transaction.status}
@@ -156,10 +84,10 @@ export default function JobTransactions() {
               </div>
               <p
                 className={
-                  transaction.status === "valider" ? "p_valider" : "p_annuler"
+                  transaction.status.toLowerCase() === "valider" ? "p_valider" : "p_annuler"
                 }
               >
-                {transaction.status === "valider" ? "+" : "-"}{" "}
+                {transaction.status.toLowerCase() === "valider" ? "+" : "-"}{" "}
                 {transaction.amount}€
               </p>
             </div>

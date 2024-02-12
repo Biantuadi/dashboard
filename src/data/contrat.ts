@@ -2,7 +2,7 @@ export const fakeContrats = [
     {
       title: "Contrat 1",
       type: "Cérémonie 🎊",
-      status: "Validé",
+      status: "Valider",
       start: "10:00",
       end: "12:00",
       description: "Cérémonie de Jean et Marie qui se marient. et c'est un contrat de 2h",
@@ -12,7 +12,7 @@ export const fakeContrats = [
     {
       title: "Contrat 1",
       type: "Cérémonie 🎊",
-      status: "Validé",
+      status: "Valider",
       start: "10:00",
       end: "12:00",
       description: "Cérémonie de Jean et Marie qui se marient. et c'est un contrat de 2h",
@@ -22,7 +22,7 @@ export const fakeContrats = [
     {
       title: "Contrat 2",
       type: "Marriage 💍",
-      status: "Annulé",
+      status: "Annuler",
       start: "10:00",
       description: "Cérémonie de Jean et Marie qui se marient. et c'est un contrat de 2h",
       end: "12:00",
@@ -33,7 +33,7 @@ export const fakeContrats = [
       title: "Contrat 3",
       type: "Anniversaire 🎂",
       description: "anniversaire de Jean qui fête ses 25 ans",
-      status: "annulé",
+      status: "Annuler",
       start: "10:00",
       end: "12:00",
       amount: 3250,
@@ -60,3 +60,14 @@ export const fakeContrats = [
       date: "2021-10-10",
     },
   ];
+
+export interface Contrat {
+  title: string;
+  type: string;
+  status: string;
+  start: string;
+  end: string;
+  description: string;
+  amount: number;
+  date: string;
+}

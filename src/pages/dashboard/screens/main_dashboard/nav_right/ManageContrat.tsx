@@ -29,7 +29,7 @@ export default function ManageContrat({
       <nav>
         <li
           className={
-            selectedContrat === "Validé" ? "active classic" : "classic"
+            selectedContrat === "Valider" ? "active classic" : "classic"
           }
           onClick={() => handleOpenManageContrat("Validé")}
         >
@@ -45,7 +45,7 @@ export default function ManageContrat({
         </li>
         <li
           className={
-            selectedContrat === "Annulé" ? "active classic" : "classic"
+            selectedContrat === "Annuler" ? "active classic" : "classic"
           }
           onClick={() => handleOpenManageContrat("Annulé")}
         >
