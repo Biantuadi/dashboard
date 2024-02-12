@@ -1,8 +1,38 @@
+export const contratTypes = [
+    {
+      id: 1,
+      label: "Cérémonie 🎊",
+    },
+    {
+      id: 2,
+      label: "Marriage 💍",
+    },
+    {
+      id: 3,
+      label: "Anniversaire 🎂",
+    },
+]
+
+export const contratStatus = [
+    {
+      id: 1,
+      label: "Valider",
+    },
+    {
+      id: 2,
+      label: "Annuler",
+    },
+    {
+      id: 3,
+      label: "En cours",
+    },
+]
+
 export const fakeContrats = [
     {
       title: "Contrat 1",
-      type: "Cérémonie 🎊",
-      status: "Valider",
+      type: 1,
+      status: 1,
       start: "10:00",
       end: "12:00",
       description: "Cérémonie de Jean et Marie qui se marient. et c'est un contrat de 2h",
@@ -11,8 +41,8 @@ export const fakeContrats = [
     },
     {
       title: "Contrat 1",
-      type: "Cérémonie 🎊",
-      status: "Valider",
+      type: 1,
+      status: 1,
       start: "10:00",
       end: "12:00",
       description: "Cérémonie de Jean et Marie qui se marient. et c'est un contrat de 2h",
