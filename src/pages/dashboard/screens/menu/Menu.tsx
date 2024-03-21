@@ -78,7 +78,7 @@ export default function Menu(): JSX.Element {
           />
         </div>
         <div className="aside">
-          <h2>Categories</h2>
+          <h2>Les tarifes</h2>
         </div>
       </div>
     </MenuStyled>

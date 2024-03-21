@@ -10,6 +10,7 @@ import { SiCodesignal } from "react-icons/si";
 import { RiHistoryFill } from "react-icons/ri";
 import { FiUsers } from "react-icons/fi";
 import { IoRestaurantOutline } from "react-icons/io5";
+import { NavLink } from "react-router-dom";
 
 export default function Navmenu() {
   return (
@@ -58,7 +59,9 @@ export default function Navmenu() {
           icon={<IoLogOutOutline />}
         />
       </div>
-        <Button text="Design facture" className="classic" icon={<SiCodesignal />}/>
+            <NavLink to="/dashboard/contrat" className="add_contrat">
+              <Button text="+Ajout contrat" className="classic" icon={<SiCodesignal />}/>
+            </NavLink>
     </NavmenuStyled>
   );
 }
@@ -122,10 +125,15 @@ const NavmenuStyled = styled.div`
   button {
     font-weight: normal;
     margin-top: 80%;
+    width: 100%;
 
     svg {
       font-size: 1.03rem;
       color: #fff;
     }
+  }
+
+  .add_contrat {
+    width: 220px;
   }
 `;

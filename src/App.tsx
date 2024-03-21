@@ -15,6 +15,7 @@ import Menu from "./pages/dashboard/screens/menu/Menu";
 import Calendar from "./pages/dashboard/screens/calendar/Calendar";
 import Analytics from "./pages/dashboard/screens/analytics/Analytics";
 import Contact from "./pages/dashboard/screens/contact/Contact";
+import AddContrat from "./pages/dashboard/screens/add_contrat/AddContrat";
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
           <Route path="contact" element={<Contact />} />
           <Route path="profile" element={<Profile />} />
           <Route path="history" element={<History />} />
+          <Route path="contrat" element={<AddContrat />} />
         </Route>
         <Route path="*" element={<Navigate replace to="/dashboard" />} />
       </Routes>

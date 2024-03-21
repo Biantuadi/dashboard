@@ -10,20 +10,27 @@ import { Contrat, fakeContrats } from "../../../../../data/contrat";
 
 export default function JobTransactions() {
   const [activeCategory, setActiveCategory] = useState<string>("Tout");
-  const [transactions, setTransactions] = useState<Contrat[]>([...fakeContrats]);
+  const [transactions, setTransactions] = useState<Contrat[]>([...fakeContrats] as Contrat[]);
   const [showAllTransactions, setShowAllTransactions] = useState<boolean>(false);
+
+
+  // Update the type of the 'type' property in the 'fakeContrats' array to be 'string'
+  const updatedFakeContrats: Contrat[] = fakeContrats.map((contrat) => ({
+    ...contrat,
+    type: contrat.type.toString(),
+  }));
 
   const handleCategoryChange = (category: string): void => {
     setActiveCategory(category);
     switch (category) {
       case "Valider":
-        setTransactions(fakeContrats);
+        setTransactions(updatedFakeContrats);
         break;
       case "Annuler":
-        setTransactions(fakeContrats);
+        setTransactions(updatedFakeContrats);
         break;
       default:
-        setTransactions([...fakeContrats]);
+        setTransactions([...updatedFakeContrats]);
     }
     setShowAllTransactions(false);
   };

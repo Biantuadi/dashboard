@@ -32,7 +32,7 @@ export const fakeContrats = [
     {
       title: "Contrat 1",
       type: 1,
-      status: 1,
+      status: "Valider",
       start: "10:00",
       end: "12:00",
       description: "Cérémonie de Jean et Marie qui se marient. et c'est un contrat de 2h",
@@ -42,7 +42,7 @@ export const fakeContrats = [
     {
       title: "Contrat 1",
       type: 1,
-      status: 1,
+      status: "Valider",
       start: "10:00",
       end: "12:00",
       description: "Cérémonie de Jean et Marie qui se marient. et c'est un contrat de 2h",

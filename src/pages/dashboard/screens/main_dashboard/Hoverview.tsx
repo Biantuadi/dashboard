@@ -10,11 +10,13 @@ import JobTransactions from "./cards_grid/JobTransactions_2";
 import TitlePage from "../../../../components/TitlePage";
 import ManageContrat from "./nav_right/ManageContrat";
 import { fakeContrats } from "../../../../data/contrat";
+import { NavLink } from "react-router-dom";
 
 export default function Hoverview() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedContrat, setSelectedContrat] = useState("");
   const [contrats, setContrats] = useState(fakeContrats);
+  // const history = useHistory();
 
   const handleOpenManageContrat = (taskLabel: string) => {
     setSelectedContrat(taskLabel);
@@ -32,6 +34,7 @@ export default function Hoverview() {
         text="Overview"
         button_text="+ Ajouter un contrat"
         onClick={() => {}}
+        navLink="/dashboard/contrat"
       />
 
       <ManageContrat isOpen={isOpen} handleCloseManageContrat={handleCloseManageContrat} contrats={contrats} selectedContrat={selectedContrat} handleOpenManageContrat={handleOpenManageContrat} setContrats={setContrats} />

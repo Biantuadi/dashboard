@@ -55,6 +55,11 @@ html::-webkit-scrollbar-thumb {
   border: 3px solid #f5f5f5;
 }
 
+/* 
+scrollbar horizontal none
+ */
+
+
 body {
   background: #FDFDFD;
   color: #16183b;
